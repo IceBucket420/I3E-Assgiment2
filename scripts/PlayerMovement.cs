@@ -31,13 +31,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.gameObject.tag == "Coin")
         {
-            collision.gameObject.GetComponent<coinScript>().Collected();
+            //collision.gameObject.GetComponent<coinScript>().Collected();
         }
 
         if (collision.gameObject.tag == "Damage")
         {
-            collision.gameObject.GetComponent<playerDead>().Damaged();
-            hit = true;
+            //collision.gameObject.GetComponent<playerDead>().Damaged();
+            //hit = true;
         }
     }
 
