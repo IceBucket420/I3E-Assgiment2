@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -69,14 +70,14 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    void OnFire(InputValue value)
+    void OnFire()
     {
 
     }
     void OnLook(InputValue value)
     {
         rotationInput.y = value.Get<Vector2>().x;
-        headRotationInput.x = -value.Ger<Vector2>().y;
+        headRotationInput.x = -value.Get<Vector2>().y;
     }
     // Start is called before the first frame update
     void OnMove(InputValue value)
