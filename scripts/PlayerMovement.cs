@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     float movementSpeed = 0.07f;
     Vector3 rotationInput = Vector3.zero;
     float rotationSpeed = 1f;
+    Vector3 headRotationInput = Vector3.zero;
 
     int score = 0;
 
@@ -19,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     public float sprintModifier = 0.1f;
 
     bool hit = false;
+
+    public  GameObject playerCamera;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -73,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
     void OnLook(InputValue value)
     {
         rotationInput.y = value.Get<Vector2>().x;
+        headRotationInput.x = -value.Ger<Vector2>().y;
     }
     // Start is called before the first frame update
     void OnMove(InputValue value)
@@ -111,6 +115,11 @@ public class PlayerMovement : MonoBehaviour
             //transform.position += (forwardDir + rightDir) * movementSpeed;
 
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + rotationInput * rotationSpeed);
+
+            var headRot = playerCamera.transform.rotation.eulerAngles
+                + headRotationInput * rotationSpeed;
+
+            playerCamera.transform.rotation = Quaternion.Euler(headRot);
         }
     }
 }
