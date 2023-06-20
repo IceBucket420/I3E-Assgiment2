@@ -1881,17 +1881,9 @@ MonoBehaviour:
   m_Mesh: {fileID: 925245015}
   m_VersionIndex: 2622
   m_IsSelectable: 1
-  m_SelectedFaces: 00000000
-  m_SelectedEdges:
-  - a: 0
-    b: 1
-  - a: 2
-    b: 0
-  - a: 1
-    b: 3
-  - a: 3
-    b: 2
-  m_SelectedVertices: 00000000010000000200000003000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!4 &198554831
 Transform:
   m_ObjectHideFlags: 0
@@ -12159,7 +12151,7 @@ GameObject:
   - component: {fileID: 1699613886}
   - component: {fileID: 1699613885}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: cave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
