@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.DrawLine(head.transform.position, head.transform.position + (head.transform.forward * 5f));
             RaycastHit hitInfo;
             if (Physics.Raycast(head.transform.position,
-                head.transform.forward, out hitInfo, 5f))
+                head.transform.forward, out hitInfo, 10f))
             {
                 if (hitInfo.transform.tag == "Monkey" && mouseclick)
                 {
@@ -99,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
                     hitInfo.transform.GetComponent<EnemyScript>().Hurt();
                 }
             }
+            mouseclick = false;
 
             Vector3 forwardDir = transform.forward;
             forwardDir *= movementInput.y;
