@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform head;
     public TextMeshProUGUI HealthDisplay;
     public Image healthBar;
+    
    
 
 
@@ -130,7 +132,6 @@ public class PlayerMovement : MonoBehaviour
 
             isGrounded = false;
 
-            healthBar.fillAmount = Mathf.Clamp(Health / 100, 0, 1f);
         }
         else
         {
