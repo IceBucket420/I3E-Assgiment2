@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     {
         isGrounded = true;
-        //Debug.Log("Im grounded");
+        //Debug.Log("Im grounded");// to test if player is grounded
     }
 
     private void OnCollisionEnter(Collision collision)
