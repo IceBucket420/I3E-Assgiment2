@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     public AudioSource bgm;
-    public float Health = 100;
+    public int Health = 100;
     float timerVal = 0;
     public float sprintModifier = 0.1f;
     private bool isGrounded = false;
@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     public  GameObject playerCamera;
     public Transform head;
+    public TextMeshProUGUI HealthDisplay;
 
 
     private void OnCollisionStay(Collision collision)
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Health -= 1;
             Debug.Log("player health:" + Health);
+            HealthDisplay.text = "Health:" + Health;
         }
     }
 
