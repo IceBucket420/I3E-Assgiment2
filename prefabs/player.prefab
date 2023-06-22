@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 5780893397458585438}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,7 @@ Transform:
   m_Children:
   - {fileID: 5780893397028072068}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 85.143, z: 0}
 --- !u!33 &5780893397458585434
 MeshFilter:
@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad82e0bb3c8a58e4dbd2029b0233b5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpStrenght: 5
   bgm: {fileID: 0}
   Health: 100
   sprintModifier: 0.1
