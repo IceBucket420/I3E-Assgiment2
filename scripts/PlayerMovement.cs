@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform head;
     public TextMeshProUGUI HealthDisplay;
     public Image healthBar;
+   
 
 
     private void OnCollisionStay(Collision collision)
@@ -128,6 +129,8 @@ public class PlayerMovement : MonoBehaviour
             playerCamera.transform.rotation = Quaternion.Euler(headRot);
 
             isGrounded = false;
+
+            healthBar.fillAmount = Mathf.Clamp(Health / 100, 0, 1f);
         }
         else
         {
