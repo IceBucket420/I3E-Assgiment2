@@ -21,8 +21,11 @@ public class PlayerMovement : MonoBehaviour
     float timerVal = 0;
     public float sprintModifier = 0.1f;
     private bool isGrounded = false;
+    bool mouseclick = false;
 
     public  GameObject playerCamera;
+    public Transform head;
+
 
     private void OnCollisionStay(Collision collision)
 
@@ -38,31 +41,11 @@ public class PlayerMovement : MonoBehaviour
             Health -= 1;
             Debug.Log("player health:" + Health);
         }
-
-        if (collision.gameObject.tag == "Coin")
-        {
-            //collision.gameObject.GetComponent<coinScript>().Collected();
-        }
-
-        if (collision.gameObject.tag == "Damage")
-        {
-            //collision.gameObject.GetComponent<playerDead>().Damaged();
-            //hit = true;
-        }
     }
-
-
-    //private void OnTriggerEnter(Collider collider)
-    //{
-    //   if (collider.gameObject.tag == "triggerbox")
-    //  {
-    //       Debug.Log("Enter Trigger:")
-    //   }
-    //}
 
     void OnFire()
     {
-
+        mouseclick = true;
     }
     void OnLook(InputValue value)
     {
@@ -92,8 +75,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         if (Health > 0)
         {
  
@@ -105,6 +86,18 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 movementSpeed = 0.07f;
+            }
+
+            Debug.DrawLine(head.transform.position, head.transform.position + (head.transform.forward * 5f));
+            RaycastHit hitInfo;
+            if (Physics.Raycast(head.transform.position,
+                head.transform.forward, out hitInfo, 5f))
+            {
+                if (hitInfo.transform.tag == "Monkey" && mouseclick)
+                {
+                    Debug.Log("raycast hit:" + hitInfo.transform.gameObject.name);
+                    hitInfo.transform.GetComponent<EnemyScript>().hurt();
+                }
             }
 
             Vector3 forwardDir = transform.forward;
@@ -123,12 +116,16 @@ public class PlayerMovement : MonoBehaviour
                 + headRotationInput * rotationSpeed;
 
             headRotationInput.x += rotationInput.y;
-            headRotationInput.x= Mathf.Clamp(headRotationInput.x, -90f, 90f);
+            headRotationInput.x= Mathf.Clamp(headRotationInput.x, -45f, 45f);
             
 
             playerCamera.transform.rotation = Quaternion.Euler(headRot);
 
             isGrounded = false;
+        }
+        else
+        {
+
         }
     }
 }
