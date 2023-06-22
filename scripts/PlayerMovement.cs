@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public float Health = 100;
     float timerVal = 0;
     public float sprintModifier = 0.1f;
+  
 
     bool hit = false;
 
@@ -88,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -115,10 +116,15 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<Rigidbody>().MovePosition(transform.position + (forwardDir + rightDir) * movementSpeed);
             //transform.position += (forwardDir + rightDir) * movementSpeed;
 
+
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + rotationInput * rotationSpeed);
 
             var headRot = playerCamera.transform.rotation.eulerAngles
                 + headRotationInput * rotationSpeed;
+
+            headRotationInput.x -= rotationInput.y;
+            headRotationInput.x= Mathf.Clamp(headRotationInput.x, -90f, 90f);
+            
 
             playerCamera.transform.rotation = Quaternion.Euler(headRot);
         }
