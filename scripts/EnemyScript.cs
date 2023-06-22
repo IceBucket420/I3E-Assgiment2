@@ -20,7 +20,7 @@ public class EnemyScript : MonoBehaviour
     private Vector3? lastKnownPlayerPosition;
 
     //set health of enemies
-    public float MonkeyHealth = 3; // Health of the enemy
+    public float MonkeyHealth = 3; 
     public float PlayerAttack = 2; // the damage the player deals to the enemy
 
   
@@ -84,7 +84,9 @@ public class EnemyScript : MonoBehaviour
     {
         //enemy gets hurt when this function is called
         MonkeyHealth -= PlayerAttack ;
-        if (MonkeyHealth == 0)
+        Debug.Log(" monkey health: " + MonkeyHealth);
+
+        if (MonkeyHealth <= 0)
         {
             Destroy(this.gameObject); // destroy enemy when player kills it
         }
