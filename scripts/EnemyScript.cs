@@ -41,7 +41,7 @@ public class EnemyScript : MonoBehaviour
         Monkey.transform.position = Vector3
                 .MoveTowards(transform.position, Player.position, moveSpeed * Time.deltaTime);
     }
-
+    //
     void Look()
     {
         Vector3 deltaToPlayer = player.transform.position - visionPoint.position;
