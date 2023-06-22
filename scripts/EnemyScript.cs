@@ -19,7 +19,6 @@ public class EnemyScript : MonoBehaviour
 
     //set health of enemies
     public float MonkeyHealth = 3;
-    public bool isMoving = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,18 +31,6 @@ public class EnemyScript : MonoBehaviour
         Vector3 lookAt = Player.position;
         lookAt.y = transform.position.y;
         transform.LookAt(lookAt);
-        if (isMoving)
-        {
-            transform.position = Vector3
-                .MoveTowards(transform.position, Player.position, moveSpeed * Time.deltaTime);
-        }
-
-    }
-
-    public void MoveToPlayer(Transform player)
-    {
-        Player = player;
-        isMoving = true;
     }
 
     void Look()
@@ -81,6 +68,15 @@ public class EnemyScript : MonoBehaviour
             {
                 lastKnownPlayerPosition = player.transform.position;
             }
+        }
+    }
+
+    public void Hurt()
+    {
+        MonkeyHealth -= 1;
+        if (MonkeyHealth == 0)
+        {
+            Destroy(this.gameObject);
         }
     }
 }
