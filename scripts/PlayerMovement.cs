@@ -97,8 +97,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
+
         if (hit == false)
         {
+ 
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 // Set current speed to run if shift is down
@@ -108,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 movementSpeed = 0.07f;
             }
+
             Vector3 forwardDir = transform.forward;
             forwardDir *= movementInput.y;
 
