@@ -7,6 +7,8 @@ public class EnemyScript : MonoBehaviour
     public Transform visionPoint;
     private PlayerMovement player;
 
+    public GameObject Monkey; 
+
     public Transform Player;
 
     //set the vision and movement speed  of the enemy 
@@ -19,6 +21,8 @@ public class EnemyScript : MonoBehaviour
 
     //set health of enemies
     public float MonkeyHealth = 3;
+
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +35,9 @@ public class EnemyScript : MonoBehaviour
         Vector3 lookAt = Player.position;
         lookAt.y = transform.position.y;
         transform.LookAt(lookAt);
+
+        Monkey.transform.position = Vector3
+                .MoveTowards(transform.position, Player.position, moveSpeed * Time.deltaTime);
     }
 
     void Look()
