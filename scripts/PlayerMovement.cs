@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (hitInfo.transform.tag == "Monkey" && mouseclick)
                 {
-                    Debug.Log("raycast hit:" + hitInfo.transform.gameObject.name);
+                    Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
                     hitInfo.transform.GetComponent<EnemyScript>().Hurt();
                 }
             }
