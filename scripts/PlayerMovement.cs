@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public  GameObject playerCamera;
     public Transform head;
     public TextMeshProUGUI HealthDisplay;
+    public Image healthBar;
 
 
     private void OnCollisionStay(Collision collision)
