@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Monkey")// Allows player to be damaged once Enemy approaches player
         {
             Health -= 1;
-           // Debug.Log("Enter : " + collision.gameObject.name);
+            Debug.Log("player health:" + Health);
         }
 
         if (collision.gameObject.tag == "Coin")
