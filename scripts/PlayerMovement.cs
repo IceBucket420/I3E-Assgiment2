@@ -33,11 +33,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "collectables")
+        if (collision.gameObject.tag == "Monkey")// Allows player to be damaged once Enemy approaches player
         {
-            //score += 3;
+            Health -= 1;
            // Debug.Log("Enter : " + collision.gameObject.name);
-           // Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.tag == "Coin")
