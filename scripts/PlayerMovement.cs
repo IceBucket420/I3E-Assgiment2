@@ -72,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
         void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        HealthDisplay.text = "Health: " + Health;
     }
 
     // Update is called once per frame
