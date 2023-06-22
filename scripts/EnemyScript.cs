@@ -20,7 +20,8 @@ public class EnemyScript : MonoBehaviour
     private Vector3? lastKnownPlayerPosition;
 
     //set health of enemies
-    public float MonkeyHealth = 3;
+    public float MonkeyHealth = 3; // Health of the enemy
+    public float PlayerAttack = 2; // the damage the player deals to the enemy
 
   
     // Start is called before the first frame update
@@ -34,8 +35,9 @@ public class EnemyScript : MonoBehaviour
     {
         Vector3 lookAt = Player.position;
         lookAt.y = transform.position.y;
-        transform.LookAt(lookAt);
+        transform.LookAt(lookAt); // allows enemy to roatate and face player
 
+        //Let the enemy move towards the player
         Monkey.transform.position = Vector3
                 .MoveTowards(transform.position, Player.position, moveSpeed * Time.deltaTime);
     }
@@ -80,10 +82,11 @@ public class EnemyScript : MonoBehaviour
 
     public void Hurt()
     {
-        MonkeyHealth -= 1;
+        //enemy gets hurt when this function is called
+        MonkeyHealth -= PlayerAttack ;
         if (MonkeyHealth == 0)
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject); // destroy enemy when player kills it
         }
     }
 }
