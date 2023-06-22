@@ -22,9 +22,6 @@ public class PlayerMovement : MonoBehaviour
     public float sprintModifier = 0.1f;
     private bool isGrounded = false;
 
-
-    bool hit = false;
-
     public  GameObject playerCamera;
 
     private void OnCollisionStay(Collision collision)
@@ -98,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
 
-        if (hit == false)
+        if (Health > 0)
         {
  
             if (Input.GetKey(KeyCode.LeftShift))
@@ -126,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
             var headRot = playerCamera.transform.rotation.eulerAngles
                 + headRotationInput * rotationSpeed;
 
-            headRotationInput.x -= rotationInput.y;
+            headRotationInput.x += rotationInput.y;
             headRotationInput.x= Mathf.Clamp(headRotationInput.x, -90f, 90f);
             
 
