@@ -233,6 +233,7 @@ MonoBehaviour:
   Health: 100
   sprintModifier: 0.1
   playerCamera: {fileID: 5780893397028072065}
+  head: {fileID: 5780893397458585435}
 --- !u!54 &5780893397458585438
 Rigidbody:
   m_ObjectHideFlags: 0
