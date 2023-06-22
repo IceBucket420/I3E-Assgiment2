@@ -116,7 +116,8 @@ public class PlayerMovement : MonoBehaviour
             var headRot = playerCamera.transform.rotation.eulerAngles
                 + headRotationInput * rotationSpeed;
 
-            headRotationInput.x += rotationInput.y;
+            //limitations for the player camera
+            headRotationInput.x -= rotationInput.y; 
             headRotationInput.x= Mathf.Clamp(headRotationInput.x, -45f, 45f);
             
 
