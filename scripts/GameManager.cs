@@ -10,8 +10,9 @@ public class GameManager : MonoBehaviour
     public static int Score;
     public static GameManager instance;
     public GameObject QuitMenu;
-    public GameObject mm_canvas;
+    public GameObject MainMenuCanvas;
     public int Level2;
+    public AudioSource bgm;
 
     // Start is called before the first frame update
     private void Awake()
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         DontDestroyOnLoad(QuitMenu);
-        mm_canvas.gameObject.SetActive(false);
+        MainMenuCanvas.gameObject.SetActive(false);
     }
 
     public void OnQuitButton()
