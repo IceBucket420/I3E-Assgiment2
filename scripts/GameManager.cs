@@ -8,23 +8,14 @@ public class GameManager : MonoBehaviour
     public GameObject PlayerPrefab;
     private PlayerMovement activePlayer;
     public static int Score;
-
-    //public static void StaticFnc()
     public static GameManager instance;
-    //{
-    //    if (activePlayer = null)
-    //    {
-
-    //    }
-    //}
-
+  
 
 
     // Start is called before the first frame update
     private void Awake()
     {
-        //DontDestroyOnLoad(gameObject);
-        //SceneManager.activeSceneChanged += SpawnPlayerOnLoad;
+        
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -40,18 +31,7 @@ public class GameManager : MonoBehaviour
     private void SpawnPlayerOnLoad(Scene prev, Scene next)
     {
         Debug.Log("Entering Scene is:" + next.buildIndex);
-        //if(next.buildIndex == 3) // main menu is 3
-        //{
-        //    if (activePlayer != null)
-        //    {
-        //        Destroy(activePlayer);
-        //        activePlayer = null;
-        //    }
-        //}
-        //else
-        //{
-
-        //}
+  
         playerSpawnSpot playerSpot = FindObjectOfType<playerSpawnSpot>();
         if (activePlayer == null)
         {
