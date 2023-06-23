@@ -33,6 +33,10 @@ public class EnemyScript : MonoBehaviour
         player = GameObject.FindObjectOfType<PlayerMovement>();
     }
 
+    private void Awake()
+    {
+        
+    }
 
     // Update is called once per frame
     void Update()
