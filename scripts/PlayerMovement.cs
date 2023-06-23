@@ -16,8 +16,6 @@ public class PlayerMovement : MonoBehaviour
     public float jumpStrenght = 5f;
 
 
-
-    public AudioSource bgm;
     public int Health = 100;
     float timerVal = 0;
     public float sprintModifier = 0.1f;
@@ -48,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
             Health -= 1;
             Debug.Log("player health:" + Health);
             HealthDisplay.text = "Health:" + Health;
+        }
+
+        if (collision.gameObject.tag == "Teleport")
+        {
+            SceneManager.LoadScene(1);
         }
     }
 
@@ -112,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
                     hitInfo.transform.GetComponent<EnemyScript>().Hurt(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
+                    GetComponent<AudioSource>().Play();
                 }
             }
             mouseclick = false; // detect if player clicked
