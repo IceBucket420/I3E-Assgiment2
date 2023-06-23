@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TeleportScene : MonoBehaviour
 {
+    public int SceneChange;
+
+    public void Interact()
+    {
+        SceneManager.LoadScene(SceneChange);
+    }
     // Start is called before the first frame update
     void Start()
     {
