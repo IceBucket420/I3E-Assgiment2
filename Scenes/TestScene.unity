@@ -817,7 +817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visionPoint: {fileID: 0}
   Monkey: {fileID: 1831233628}
-  Player: {fileID: 0}
+  Player: {fileID: 5780893397458585435, guid: acbf911ec3a21a34aa10709e8bbd21a6, type: 3}
   visionAngle: 30
   visionDistance: 10
   moveSpeed: 2
