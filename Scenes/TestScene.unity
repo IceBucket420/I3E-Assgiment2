@@ -530,7 +530,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29262
+  m_Name: pb_Mesh25750
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -815,9 +815,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4c280bc52ff4f498252f8c0bf764e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionPoint: {fileID: 1831233633}
+  visionPoint: {fileID: 0}
   Monkey: {fileID: 1831233628}
-  Player: {fileID: 5780893397458585435, guid: acbf911ec3a21a34aa10709e8bbd21a6, type: 3}
+  Player: {fileID: 0}
   visionAngle: 30
   visionDistance: 10
   moveSpeed: 2
