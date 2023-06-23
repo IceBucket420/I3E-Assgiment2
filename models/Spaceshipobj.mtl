@@ -1,0 +1,17 @@
+newmtl red_metal
+Kd 0.5754716 0.01447723 0.01447723
+d 1
+
+newmtl glass
+map_Kd glass_AlbedoTransparency.1011.png
+Kd 1 1 1
+d 1
+
+newmtl orange_metal
+Kd 0.8 0.4292069 0.01176472
+d 1
+
+newmtl yellow_metal
+Kd 0.8018868 0.7218671 0.0126082
+d 1
+
