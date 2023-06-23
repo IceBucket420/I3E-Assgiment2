@@ -40,12 +40,12 @@ public class EnemyScript : MonoBehaviour
         Vector3 lookAt = Player.position;
         lookAt.y = transform.position.y;
         transform.LookAt(lookAt); // allows enemy to roatate and face player
-        Debug.Log("Im looking at the player");
+       
 
         //Let the enemy move towards the player
         Monkey.transform.position = Vector3
                 .MoveTowards(transform.position, Player.position, moveSpeed * Time.deltaTime);
-        Debug.Log("player: " + Player);
+
     }
     void Look()
     {
