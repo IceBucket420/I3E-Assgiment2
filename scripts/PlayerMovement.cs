@@ -72,8 +72,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
 
-        void Start()
+        DontDestroyOnLoad(gameObject);
+    }
+
+    void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         HealthDisplay.text = "Health: " + Health;
