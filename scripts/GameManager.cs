@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +14,14 @@ public class GameManager : MonoBehaviour
     public GameObject QuitMenu;
     public GameObject MainMenuCanvas;
     public int Level2;
+    public int audioSettings;
     public AudioSource bgm;
+    public Slider MasterSlider;
+    public TextMeshProUGUI MasterSound;
+    public Slider BGMSlider;
+    public TextMeshProUGUI BGMSound;
+    public Slider EffectsSlider;
+    public TextMeshProUGUI EffectsSound;
 
     // Start is called before the first frame update
     private void Awake()
@@ -69,6 +78,35 @@ public class GameManager : MonoBehaviour
         QuitMenu.gameObject.SetActive(false);
     }
 
+    public void OnSettingsButton()
+    {
+        SceneManager.LoadScene(2);
+        DontDestroyOnLoad(QuitMenu);
+    }
+
+    public void OnMasterSlider()
+    {
+        MasterSlider.onValueChanged.AddListener((v) =>
+        {
+            MasterSound.text = v.ToString("0");
+        });
+    }
+
+    public void OnBGMSlider()
+    {
+        BGMSlider.onValueChanged.AddListener((v) =>
+        {
+            BGMSound.text = v.ToString("0");
+        });
+    }
+
+    public void OnEffectsSlider()
+    {
+        EffectsSlider.onValueChanged.AddListener((v) =>
+        {
+            EffectsSound.text = v.ToString("0");
+        });
+    }
     private void Start()
     {
         QuitMenu.gameObject.SetActive(false);
