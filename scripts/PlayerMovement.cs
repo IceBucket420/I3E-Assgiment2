@@ -107,14 +107,17 @@ public class PlayerMovement : MonoBehaviour
             if (Physics.Raycast(head.transform.position,
                 head.transform.forward, out hitInfo, 10f))
             {
+                // Player hits enemies with raycast and enemies take damage
                 if (hitInfo.transform.tag == "Monkey" && mouseclick)
                 {
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
-                    hitInfo.transform.GetComponent<EnemyScript>().Hurt();
+                    hitInfo.transform.GetComponent<EnemyScript>().Hurt(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
                 }
             }
-            mouseclick = false;
+            mouseclick = false; // detect if player clicked
 
+
+            // Player movement 
             Vector3 forwardDir = transform.forward;
             forwardDir *= movementInput.y;
 
@@ -124,9 +127,11 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<Rigidbody>().MovePosition(transform.position + (forwardDir + rightDir) * movementSpeed);
             //transform.position += (forwardDir + rightDir) * movementSpeed;
 
-
+            // FOr player to look left and right
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + rotationInput * rotationSpeed);
 
+
+            // For Player to look up and down
             var headRot = playerCamera.transform.rotation.eulerAngles
                 + headRotationInput * rotationSpeed;
 
@@ -137,13 +142,13 @@ public class PlayerMovement : MonoBehaviour
 
             playerCamera.transform.rotation = Quaternion.Euler(headRot);
 
-            isGrounded = false;
+            isGrounded = false; 
 
         }
-        else
+        else // When Player dies
         {
-            CurrentScene = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(4);
+            CurrentScene = SceneManager.GetActiveScene().buildIndex; // When player dies, this would track the scene int the player has died in
+            SceneManager.LoadScene(4); // loads death UI
         }
     }
 }
