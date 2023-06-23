@@ -114,6 +114,18 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(3);
         DontDestroyOnLoad(AudioSettingsCanvas);
     }
+
+    public void OnMainMenuButton()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void OnRestartButton(int i)
+    {
+        i = PlayerPrefab.GetComponent<PlayerMovement>().CurrentScene;
+        SceneManager.LoadScene(i);
+    }
+
     private void Start()
     {
         QuitMenu.gameObject.SetActive(false);
