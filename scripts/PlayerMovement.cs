@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     public float sprintModifier = 0.1f;
     private bool isGrounded = false;
     bool mouseclick = false;
+    public int Death;
+    public int CurrentScene;
 
     public  GameObject playerCamera;
     public Transform head;
@@ -140,7 +142,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-
+            CurrentScene = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(4);
         }
     }
 }
