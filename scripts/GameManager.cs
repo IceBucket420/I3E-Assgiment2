@@ -9,8 +9,9 @@ public class GameManager : MonoBehaviour
     private PlayerMovement activePlayer;
     public static int Score;
     public static GameManager instance;
-  
-
+    public GameObject QuitMenu;
+    public GameObject mm_canvas;
+    public int Level2;
 
     // Start is called before the first frame update
     private void Awake()
@@ -43,6 +44,33 @@ public class GameManager : MonoBehaviour
             activePlayer.transform.position = playerSpot.transform.position;
             activePlayer.transform.rotation = playerSpot.transform.rotation;
         }
+    }
+
+    public void OnStartButton()
+    {
+        SceneManager.LoadScene(1);
+        DontDestroyOnLoad(QuitMenu);
+        mm_canvas.gameObject.SetActive(false);
+    }
+
+    public void OnQuitButton()
+    {
+        QuitMenu.gameObject.SetActive(true);
+    }
+
+    public void OnYesButtion()
+    {
+        Application.Quit();
+    }
+
+    public void OnNoButton()
+    {
+        QuitMenu.gameObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        QuitMenu.gameObject.SetActive(false);
     }
     void Update()
     {
