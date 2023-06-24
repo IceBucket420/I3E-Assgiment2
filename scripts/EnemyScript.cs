@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
 public class EnemyScript : MonoBehaviour
@@ -9,7 +6,7 @@ public class EnemyScript : MonoBehaviour
     public Transform visionPoint;
     private PlayerMovement player;
 
-    public GameObject Monkey; 
+    public GameObject Monkey;
 
     public Transform Player;
 
@@ -22,10 +19,10 @@ public class EnemyScript : MonoBehaviour
     private Vector3? lastKnownPlayerPosition;
 
     //set health of enemies
-    public float MonkeyHealth = 3; 
+    public float MonkeyHealth = 3;
     public float PlayerAttack = 2; // the damage the player deals to the enemy
 
-  
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +32,7 @@ public class EnemyScript : MonoBehaviour
 
     private void Awake()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -44,7 +41,7 @@ public class EnemyScript : MonoBehaviour
         Vector3 lookAt = Player.position;
         lookAt.y = transform.position.y;
         transform.LookAt(lookAt); // allows enemy to roatate and face player
-       
+
 
         //Let the enemy move towards the player
         Monkey.transform.position = Vector3
@@ -92,7 +89,7 @@ public class EnemyScript : MonoBehaviour
     public void Hurt()
     {
         //enemy gets hurt when this function is called
-        MonkeyHealth -= PlayerAttack ;
+        MonkeyHealth -= PlayerAttack;
         Debug.Log(" monkey health: " + MonkeyHealth);
 
         if (MonkeyHealth <= 0)

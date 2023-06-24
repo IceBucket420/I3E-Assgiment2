@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -38,7 +36,7 @@ public class VolumeSettings : MonoBehaviour
 
     void SetMasterVolume(float value)
     {
-        mixer.SetFloat(MIXER_MASTER, Mathf.Log10(value)*20);
+        mixer.SetFloat(MIXER_MASTER, Mathf.Log10(value) * 20);
     }
     void SetSFXVolume(float value)
     {

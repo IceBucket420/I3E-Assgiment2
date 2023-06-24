@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -14,7 +12,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -27,7 +25,7 @@ public class AudioManager : MonoBehaviour
         LoadVolume();
     }
 
-   
+
     void LoadVolume()// volume saved in VolumeSettings.cs
     {
         float masterVolume = PlayerPrefs.GetFloat(MASTER_KEY, 1f);
