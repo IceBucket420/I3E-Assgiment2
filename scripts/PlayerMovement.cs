@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public int Death;
     public int CurrentScene;
     public bool WearingHelmet = false;
+    public bool HoldingGun = false;
 
     public  GameObject playerCamera;
     public Transform head;
@@ -125,8 +126,14 @@ public class PlayerMovement : MonoBehaviour
                 {
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
                     hitInfo.transform.GetComponent<objectScript>().Collected(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
-                    hitInfo.transform.GetComponent<objectScript>().OnDestroy();
                     WearingHelmet = true;
+                }
+
+                if (hitInfo.transform.tag == "gun" && mouseclick)
+                {
+                    Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
+                    hitInfo.transform.GetComponent<objectScript>().Collected(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
+                    HoldingGun = true;
                 }
             }
             mouseclick = false; // detect if player clicked
