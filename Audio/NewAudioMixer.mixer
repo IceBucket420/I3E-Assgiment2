@@ -6,7 +6,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sound Effects
+  m_Name: SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: df9569e3d856cdd4f9e0da80b779c492
   m_Children: []
