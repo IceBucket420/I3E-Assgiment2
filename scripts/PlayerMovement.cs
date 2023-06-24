@@ -1,10 +1,8 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -28,12 +26,12 @@ public class PlayerMovement : MonoBehaviour
     public bool WearingHelmet = false;
     public bool HoldingGun = false;
 
-    public  GameObject playerCamera;
+    public GameObject playerCamera;
     public Transform head;
     public TextMeshProUGUI HealthDisplay;
     public Image healthBar;
-    
-   
+
+
 
 
     private void OnCollisionStay(Collision collision)
@@ -98,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Health > 0)
         {
- 
+
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 // Set current speed to run if shift is down
@@ -137,9 +135,9 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            if (HoldingGun== true && WearingHelmet == true)
+            if (HoldingGun == true && WearingHelmet == true)
             {
-            
+
             }
 
             mouseclick = false; // detect if player clicked
@@ -164,13 +162,13 @@ public class PlayerMovement : MonoBehaviour
                 + headRotationInput * rotationSpeed;
 
             //limitations for the player camera
-            headRotationInput.x -= rotationInput.y; 
-            headRotationInput.x= Mathf.Clamp(headRotationInput.x, -45f, 45f);
-            
+            headRotationInput.x -= rotationInput.y;
+            headRotationInput.x = Mathf.Clamp(headRotationInput.x, -45f, 45f);
+
 
             playerCamera.transform.rotation = Quaternion.Euler(headRot);
 
-            isGrounded = false; 
+            isGrounded = false;
 
         }
         else // When Player dies
