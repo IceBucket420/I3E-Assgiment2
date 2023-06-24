@@ -9,7 +9,7 @@ using System.Collections.Generic;
 public class objectScript : MonoBehaviour
 {
 
-    public void HelmetCollected()
+    public void Collected()
     { 
         if (gameObject.tag == "helmet")
         {
