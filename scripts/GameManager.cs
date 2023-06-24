@@ -31,9 +31,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+            SceneManager.activeSceneChanged += SpawnPlayerOnLoad;
+
+            instance = this;
+        }
+    }
+
     public void OnStartButton()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(5);
         GetComponent<AudioSource>().Play();
         DontDestroyOnLoad(QuitMenu);
         MainMenuCanvas.gameObject.SetActive(false);
@@ -102,6 +117,8 @@ public class GameManager : MonoBehaviour
         QuitMenu.gameObject.SetActive(false);
 
     }
+
+
     void Update()
     {
 
