@@ -1,9 +1,22 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class objectScript : MonoBehaviour
 {
+
+    public void HelmetCollected()
+    { 
+        if (gameObject.tag == "helmet")
+        {
+            GetComponent<AudioSource>().Play();
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
