@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,9 +11,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject QuitMenu;
     public GameObject MainMenuCanvas;
-    public int Level2;
-    public int MainMenu;
-    public int audioSettings;
+    public Animator transition;
+    public float transitionTime = 1f;
 
 
     private void SpawnPlayerOnLoad(Scene prev, Scene next)
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     public void OnStartButton()
     {
-        SceneManager.LoadScene(5);
+        StartCoroutine(LoadLevel(5));
         GetComponent<AudioSource>().Play();
         DontDestroyOnLoad(QuitMenu);
         MainMenuCanvas.gameObject.SetActive(false);
@@ -110,6 +111,14 @@ public class GameManager : MonoBehaviour
         i = PlayerPrefab.GetComponent<PlayerMovement>().CurrentScene;
         GetComponent<AudioSource>().Play();
         SceneManager.LoadScene(i);
+    }
+
+
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(levelIndex);
     }
 
     private void Start()
