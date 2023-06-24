@@ -719,6 +719,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Marker
       objectReference: {fileID: 0}
+    - target: {fileID: 8881678030143315826, guid: 25e1c4240ddaf3e49bd496b7863e5006, type: 3}
+      propertyPath: m_TagString
+      value: playerSpot
+      objectReference: {fileID: 0}
     - target: {fileID: 8881678030143315828, guid: 25e1c4240ddaf3e49bd496b7863e5006, type: 3}
       propertyPath: m_RootOrder
       value: 5
