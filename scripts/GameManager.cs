@@ -99,7 +99,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<AudioSource>().Play();
         QuitMenu.gameObject.SetActive(false);
 
     }
