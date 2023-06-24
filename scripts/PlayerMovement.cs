@@ -136,6 +136,12 @@ public class PlayerMovement : MonoBehaviour
                     HoldingGun = true;
                 }
             }
+
+            if (HoldingGun== true && WearingHelmet == true)
+            {
+            
+            }
+
             mouseclick = false; // detect if player clicked
 
 
