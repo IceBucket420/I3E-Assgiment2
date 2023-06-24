@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -23,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     bool mouseclick = false;
     public int Death;
     public int CurrentScene;
+    public bool WearingHelmet = false;
 
     public  GameObject playerCamera;
     public Transform head;
@@ -116,6 +119,14 @@ public class PlayerMovement : MonoBehaviour
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
                     hitInfo.transform.GetComponent<EnemyScript>().Hurt(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
                     GetComponent<AudioSource>().Play();
+                }
+
+                if (hitInfo.transform.tag == "helmet" && mouseclick)
+                {
+                    Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
+                    hitInfo.transform.GetComponent<objectScript>().Collected(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
+                    hitInfo.transform.GetComponent<objectScript>().OnDestroy();
+                    WearingHelmet = true;
                 }
             }
             mouseclick = false; // detect if player clicked
