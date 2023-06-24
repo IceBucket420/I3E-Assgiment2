@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject MainMenuCanvas;
     public Animator transition;
     public float transitionTime = 1f;
+    public AudioSource ButtonSound;
 
 
     private void SpawnPlayerOnLoad(Scene prev, Scene next)
@@ -49,9 +51,9 @@ public class GameManager : MonoBehaviour
 
     public void OnStartButton()
     {
-        StartCoroutine(LoadLevel(5));
-        GetComponent<AudioSource>().Play();
-        DontDestroyOnLoad(QuitMenu);
+        SceneManager.LoadScene(2);
+        //StartCoroutine(LoadLevel(2));
+        //DontDestroyOnLoad(QuitMenu);
         MainMenuCanvas.gameObject.SetActive(false);
         if (instance != null && instance != this)
         {
@@ -68,48 +70,51 @@ public class GameManager : MonoBehaviour
 
     public void OnQuitButton()
     {
-        GetComponent<AudioSource>().Play();
         QuitMenu.gameObject.SetActive(true);
+        ButtonSound.Play();
     }
 
     public void OnYesButtion()
     {
-        GetComponent<AudioSource>().Play();
+        ButtonSound.Play();
         Application.Quit();
     }
 
     public void OnNoButton()
-    {
-        GetComponent<AudioSource>().Play();
+    { 
         QuitMenu.gameObject.SetActive(false);
+        ButtonSound.Play();
     }
 
     public void OnSettingsButton()
     {
-        SceneManager.LoadScene(2);
-        GetComponent<AudioSource>().Play();
-        DontDestroyOnLoad(QuitMenu);
-        DontDestroyOnLoad(MainMenuCanvas);
+        //StartCoroutine(LoadLevel(1));
+        SceneManager.LoadScene(1);
+        ButtonSound.Play();
         MainMenuCanvas.gameObject.SetActive(false);
+        
     }
 
 
     public void OnBackButton()
     {
-        SceneManager.LoadScene(3);
-        GetComponent<AudioSource>().Play();
+        Debug.Log("back is hit");
+        //ButtonSound.Play();
+        //StartCoroutine(LoadLevel(0));
+        SceneManager.LoadScene(0);
     }
 
     public void OnMainMenuButton()
     {
-        SceneManager.LoadScene(3);
-        GetComponent<AudioSource>().Play();
+        ButtonSound.Play();
+        StartCoroutine(LoadLevel(0));
     }
 
     public void OnRestartButton(int i)
     {
+        ButtonSound.Play();
         i = PlayerPrefab.GetComponent<PlayerMovement>().CurrentScene;
-        GetComponent<AudioSource>().Play();
+        //StartCoroutine(LoadLevel(i));
         SceneManager.LoadScene(i);
     }
 
