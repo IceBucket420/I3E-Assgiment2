@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,24 +9,15 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject QuitMenu;
     public GameObject MainMenuCanvas;
-    public GameObject AudioSettingsCanvas;
     public int Level2;
     public int MainMenu;
     public int audioSettings;
-    public AudioSource bgm;
-    public Slider MasterSlider;
-    public TextMeshProUGUI MasterSound;
-    public Slider BGMSlider;
-    public TextMeshProUGUI BGMSound;
-    public Slider EffectsSlider;
-    public TextMeshProUGUI EffectsSound;
 
-    // Start is called before the first frame update
-  
+
     private void SpawnPlayerOnLoad(Scene prev, Scene next)
     {
         Debug.Log("Entering Scene is:" + next.buildIndex);
-  
+
         playerSpawnSpot playerSpot = FindObjectOfType<playerSpawnSpot>();
         if (activePlayer == null)
         {
@@ -90,38 +77,11 @@ public class GameManager : MonoBehaviour
         MainMenuCanvas.gameObject.SetActive(false);
     }
 
-    public void OnMasterSlider()
-    {
-        MasterSlider.onValueChanged.AddListener((v) =>
-        {
-            GetComponent<AudioSource>().Play();
-            MasterSound.text = v.ToString("0");
-        });
-    }
-
-    public void OnBGMSlider()
-    {
-        BGMSlider.onValueChanged.AddListener((v) =>
-        {
-            GetComponent<AudioSource>().Play();
-            BGMSound.text = v.ToString("0");
-        });
-    }
-
-    public void OnEffectsSlider()
-    {
-        EffectsSlider.onValueChanged.AddListener((v) =>
-        {
-            GetComponent<AudioSource>().Play();
-            EffectsSound.text = v.ToString("0");
-        });
-    }
 
     public void OnBackButton()
     {
         SceneManager.LoadScene(3);
         GetComponent<AudioSource>().Play();
-        DontDestroyOnLoad(AudioSettingsCanvas);
     }
 
     public void OnMainMenuButton()
@@ -141,9 +101,10 @@ public class GameManager : MonoBehaviour
     {
         GetComponent<AudioSource>().Play();
         QuitMenu.gameObject.SetActive(false);
+
     }
     void Update()
     {
-        
+
     }
 }
