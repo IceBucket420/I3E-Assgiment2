@@ -21,20 +21,21 @@ public class EnemyMonkey : MonoBehaviour
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange = 5;
+    public GameObject projectiles;
 
     //Attacking
-    public float timeBetweenAttacks = 10f;
+    public float timeBetweenAttacks = 1;
     bool alreadyAttacked;
 
     //States
-    public float sightRange = 30, attackRange = 1;
+    public float sightRange = 20, attackRange = 12;
     public bool playerInSightRange, playerInAttackRange;
 
     private void Awake()
     {
         //player = GameObject.FindObjectOfType<PlayerMovement>().transform;
         agent = GetComponent<NavMeshAgent>();
-    
+
     }
 
     private void Update()
@@ -57,13 +58,13 @@ public class EnemyMonkey : MonoBehaviour
 
         if (walkPointSet)
         {
-            agent.SetDestination(walkPoint);     
+            agent.SetDestination(walkPoint);
         }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         //Walkpoint reached
-        if (distanceToWalkPoint.magnitude< 1f)
+        if (distanceToWalkPoint.magnitude < 1f)
         {
             walkPointSet = false;
         }
@@ -93,6 +94,22 @@ public class EnemyMonkey : MonoBehaviour
 
         transform.LookAt(player);
 
+        if (!alreadyAttacked)
+        {
+            // attack code here
+            Rigidbody rb = Instantiate(projectiles, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * 12f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 3f, ForceMode.Impulse);
+            //
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
+
+    }
+
+    private void ResetAttack()
+    {
+        alreadyAttacked = false;
     }
 
     public void Hurt()
@@ -108,7 +125,7 @@ public class EnemyMonkey : MonoBehaviour
 
     }
 
-        private void OnDrawnGizmosSelected()
+    private void OnDrawnGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
