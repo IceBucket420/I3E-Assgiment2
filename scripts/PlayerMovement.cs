@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded = false;
     bool mouseclick = false;
     public int CurrentScene;
+
+    //Item collection
     public bool WearingHelmet = false;
     public bool HoldingGun = false;
     public bool Ready = false;
@@ -31,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public TextMeshProUGUI HealthDisplay;
     public Image healthBar;
     public GameObject DeathMenu;
-
+   
 
 
 
@@ -54,6 +56,16 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Teleporter 1" && Ready == true )
         {
             SceneManager.LoadScene(3);
+        }
+
+        if (collision.gameObject.tag == "projectiles")
+        {
+           
+            Debug.Log("Ouch");
+            Health -= 1;
+            HealthDisplay.text = "Health:" + Health;
+            collision.gameObject.GetComponent<objectScript>().DestroyProjectiles();
+
         }
     }
 
@@ -118,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
                 if (hitInfo.transform.tag == "Monkey" && mouseclick)
                 {
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
-                    hitInfo.transform.GetComponent<EnemyScript>().Hurt(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
+                    hitInfo.transform.GetComponent<EnemyAI>().Hurt(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
                     GetComponent<AudioSource>().Play();
                 }
 
@@ -177,6 +189,7 @@ public class PlayerMovement : MonoBehaviour
         {
             CurrentScene = SceneManager.GetActiveScene().buildIndex; // When player dies, this would track the scene int the player has died in
             DeathMenu.gameObject.SetActive(true);
+            Health = 50;
         }
     }
 }
