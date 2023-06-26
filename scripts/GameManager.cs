@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -133,7 +134,6 @@ public class GameManager : MonoBehaviour
     {
         QuitMenu.gameObject.SetActive(false);
         AudioCanvas.gameObject.SetActive(false);
-
     }
 
 
