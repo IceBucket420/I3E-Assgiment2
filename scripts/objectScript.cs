@@ -10,6 +10,12 @@ public class objectScript : MonoBehaviour
             GetComponent<AudioSource>().Play();
             Destroy(gameObject);
         }
+        if (gameObject.tag == "gun")
+        {
+            GetComponent<AudioSource>().Play();
+            Destroy(gameObject);
+        }
+
     }
     // Start is called before the first frame update
     void Start()
