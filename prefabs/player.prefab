@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3809452675124360444}
   - component: {fileID: 4528306966506175417}
   - component: {fileID: 8586340263544951287}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: DeathMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 4108635027242687615}
   - component: {fileID: 8743640817106573385}
   - component: {fileID: 5533724796203377760}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: You Died
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 131062772607799657}
   - component: {fileID: 8946874885415284738}
   - component: {fileID: 5751349674069552388}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HealthBarOutter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 2016359984151302809}
   - component: {fileID: 7951714982021552728}
   - component: {fileID: 3301708062798542980}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 4533788760965250390}
   - component: {fileID: 6512589546653377044}
   - component: {fileID: 7258420865059275229}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Main Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 7344753253824027256}
   - component: {fileID: 478355308713157241}
   - component: {fileID: 7481082941177164628}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   - component: {fileID: 1437881221774372944}
   - component: {fileID: 2449333035825843003}
   - component: {fileID: 8199098824413798633}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -770,7 +770,7 @@ GameObject:
   - component: {fileID: 5629329955025063568}
   - component: {fileID: 3328004567333886043}
   - component: {fileID: 5428001937817107572}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +873,7 @@ GameObject:
   - component: {fileID: 2541340189161762292}
   - component: {fileID: 7693282652354696592}
   - component: {fileID: 4917769613460962966}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1008,7 +1008,7 @@ GameObject:
   - component: {fileID: 5780893397028072068}
   - component: {fileID: 5780893397028072067}
   - component: {fileID: 5780893397028072066}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1097,7 +1097,7 @@ GameObject:
   - component: {fileID: 5780893397458585437}
   - component: {fileID: 5780893397458585438}
   - component: {fileID: 8456492966372697484}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: player
   m_TagString: player
   m_Icon: {fileID: 0}
@@ -1231,15 +1231,16 @@ MonoBehaviour:
   jumpStrenght: 5
   Health: 100
   sprintModifier: 0.1
-  Death: 0
   CurrentScene: 0
   WearingHelmet: 0
   HoldingGun: 0
+  Ready: 0
   playerCamera: {fileID: 5780893397028072065}
   head: {fileID: 5780893397458585435}
   HealthDisplay: {fileID: 1661478063372071048}
   healthBar: {fileID: 7481082941177164628}
   DeathMenu: {fileID: 204017307332416507}
+  projectiles: {fileID: 505926249592070244, guid: d6cd708df23bf82419b35c795df67e8b, type: 3}
 --- !u!54 &5780893397458585438
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1363,7 +1364,7 @@ GameObject:
   - component: {fileID: 3192159417657503281}
   - component: {fileID: 2502471514153577108}
   - component: {fileID: 1661478063372071048}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1498,7 +1499,7 @@ GameObject:
   - component: {fileID: 6718013402251365603}
   - component: {fileID: 7111896659612465676}
   - component: {fileID: 6858800909003010692}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1576,7 +1577,7 @@ GameObject:
   - component: {fileID: 1594878060691912023}
   - component: {fileID: 2303195650769452892}
   - component: {fileID: 6006222997501117583}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
