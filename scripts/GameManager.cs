@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject QuitMenu;
     public GameObject MainMenuCanvas;
+    public GameObject AudioCanvas;
     public Animator transition;
     public float transitionTime = 1f;
     public AudioSource ButtonSound;
@@ -51,21 +52,23 @@ public class GameManager : MonoBehaviour
 
     public void OnStartButton()
     {
+        ButtonSound.Play();
         SceneManager.LoadScene(2);
         //StartCoroutine(LoadLevel(2));
         //DontDestroyOnLoad(QuitMenu);
         MainMenuCanvas.gameObject.SetActive(false);
         if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-        }
+           {
+              Destroy(gameObject);
+           }
         else
-        {
-            DontDestroyOnLoad(gameObject);
-            SceneManager.activeSceneChanged += SpawnPlayerOnLoad;
+           {
+             DontDestroyOnLoad(gameObject);
+             SceneManager.activeSceneChanged += SpawnPlayerOnLoad;
 
-            instance = this;
-        }
+              instance = this;
+           }
+        
     }
 
     public void OnQuitButton()
@@ -89,19 +92,19 @@ public class GameManager : MonoBehaviour
     public void OnSettingsButton()
     {
         //StartCoroutine(LoadLevel(1));
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
         ButtonSound.Play();
-        MainMenuCanvas.gameObject.SetActive(false);
-        
+        AudioCanvas.gameObject.SetActive(true);
+
     }
 
 
     public void OnBackButton()
     {
         Debug.Log("back is hit");
-        //ButtonSound.Play();
+        ButtonSound.Play();
         //StartCoroutine(LoadLevel(0));
-        SceneManager.LoadScene(0);
+        AudioCanvas.gameObject.SetActive(false);
     }
 
     public void OnMainMenuButton()
@@ -129,6 +132,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         QuitMenu.gameObject.SetActive(false);
+        AudioCanvas.gameObject.SetActive(false);
 
     }
 
