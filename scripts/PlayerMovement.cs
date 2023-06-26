@@ -21,15 +21,16 @@ public class PlayerMovement : MonoBehaviour
     public float sprintModifier = 0.1f;
     private bool isGrounded = false;
     bool mouseclick = false;
-    public int Death;
     public int CurrentScene;
     public bool WearingHelmet = false;
     public bool HoldingGun = false;
+    public bool Ready = false;
 
     public GameObject playerCamera;
     public Transform head;
     public TextMeshProUGUI HealthDisplay;
     public Image healthBar;
+    public GameObject DeathMenu;
 
 
 
@@ -50,9 +51,9 @@ public class PlayerMovement : MonoBehaviour
             HealthDisplay.text = "Health:" + Health;
         }
 
-        if (collision.gameObject.tag == "Teleport")
+        if (collision.gameObject.tag == "Teleporter 1" && Ready == true )
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(3);
         }
     }
 
@@ -87,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        DeathMenu.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         HealthDisplay.text = "Health: " + Health;
     }
@@ -137,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (HoldingGun == true && WearingHelmet == true)
             {
-
+                Ready = true;
             }
 
             mouseclick = false; // detect if player clicked
@@ -174,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
         else // When Player dies
         {
             CurrentScene = SceneManager.GetActiveScene().buildIndex; // When player dies, this would track the scene int the player has died in
-            SceneManager.LoadScene(4); // loads death UI
+            DeathMenu.gameObject.SetActive(true);
         }
     }
 }
