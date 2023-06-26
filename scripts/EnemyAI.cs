@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
 
     //Health of enemies
-    public int MonkeyHealth = 3;
+    public int EnemyHealth = 3;
 
     //Player Attack
     public int PlayerAttack = 2;
@@ -115,10 +115,10 @@ public class EnemyAI : MonoBehaviour
     public void Hurt()
     {
         //enemy gets hurt when this function is called
-        MonkeyHealth -= PlayerAttack;
-        Debug.Log(" monkey health: " + MonkeyHealth);
+        EnemyHealth -= PlayerAttack;
+        Debug.Log(" monkey health: " + EnemyHealth);
 
-        if (MonkeyHealth <= 0)
+        if (EnemyHealth <= 0)
         {
             Destroy(this.gameObject); // destroy enemy when player kills it
         }
