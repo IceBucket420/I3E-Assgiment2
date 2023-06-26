@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -16,7 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpStrenght = 5f;
 
 
-    public int Health = 100;
+    public int maxHealth = 100;
+    public int currentHealth;
     float timerVal = 0;
     public float sprintModifier = 0.1f;
     private bool isGrounded = false;
@@ -31,12 +33,11 @@ public class PlayerMovement : MonoBehaviour
     public GameObject playerCamera;
     public Transform head;
     public TextMeshProUGUI HealthDisplay;
-    public Image healthBar;
     public GameObject DeathMenu;
-   
+    public AudioSource walkingSound;
 
 
-
+    public HealthBar healthBar;
     private void OnCollisionStay(Collision collision)
 
     {
@@ -48,9 +49,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Monkey")// Allows player to be damaged once Enemy approaches player
         {
-            Health -= 3;
-            Debug.Log("player health:" + Health);
-            HealthDisplay.text = "Health:" + Health;
+            currentHealth -= 3;
+            Debug.Log("player health:" + currentHealth);
+            HealthDisplay.text = "Health:" + currentHealth;
+            healthBar.SetHealth(currentHealth);
         }
 
         if (collision.gameObject.tag == "Teleporter 1" && Ready == true )
@@ -62,9 +64,10 @@ public class PlayerMovement : MonoBehaviour
         {
            
             Debug.Log("Ouch");
-            Health -= 2;
-            HealthDisplay.text = "Health:" + Health;
+            currentHealth -= 2;
+            HealthDisplay.text = "Health:" + currentHealth;
             collision.gameObject.GetComponent<objectScript>().DestroyProjectiles();
+            healthBar.SetHealth(currentHealth);
         }
     }
 
@@ -99,15 +102,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         DeathMenu.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
-        HealthDisplay.text = "Health: " + Health;
+        HealthDisplay.text = "Health: " + currentHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Health > 0)
+        if (currentHealth > 0)
         {
 
             if (Input.GetKey(KeyCode.LeftShift))
@@ -162,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
 
             mouseclick = false; // detect if player clicked
 
-
+            
             // Player movement 
             Vector3 forwardDir = transform.forward;
             forwardDir *= movementInput.y;
@@ -172,7 +177,15 @@ public class PlayerMovement : MonoBehaviour
 
             GetComponent<Rigidbody>().MovePosition(transform.position + (forwardDir + rightDir) * movementSpeed);
             //transform.position += (forwardDir + rightDir) * movementSpeed;
-
+            //if (gameObject.transform)
+            //{
+            //    if (Time.time > 3f)
+            //    {
+            //        walkingSound.Play();
+            //        Debug.Log("Im walking");
+            //    }
+                
+            //}
             // FOr player to look left and right
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + rotationInput * rotationSpeed);
 
@@ -195,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
         {
             CurrentScene = SceneManager.GetActiveScene().buildIndex; // When player dies, this would track the scene int the player has died in
             DeathMenu.gameObject.SetActive(true);
-            Health = 50;
+            currentHealth = 50;
         }
     }
 }
