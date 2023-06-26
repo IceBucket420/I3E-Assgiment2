@@ -123,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.DrawLine(head.transform.position, head.transform.position + (head.transform.forward * 5f));
             RaycastHit hitInfo;
             if (Physics.Raycast(head.transform.position,
-                head.transform.forward, out hitInfo, 10f))
+                head.transform.forward, out hitInfo, 15f))
             {
                 // Player hits enemies with raycast and enemies take damage
                 if (hitInfo.transform.tag == "Ranger" && mouseclick)
