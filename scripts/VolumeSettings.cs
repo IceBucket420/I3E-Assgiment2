@@ -27,6 +27,7 @@ public class VolumeSettings : MonoBehaviour
         BGMSlider.value = PlayerPrefs.GetFloat(AudioManager.BGM_KEY, 1f);
     }
 
+
     private void OnDisable()
     {
         PlayerPrefs.SetFloat(AudioManager.MASTER_KEY, MasterSlider.value);
