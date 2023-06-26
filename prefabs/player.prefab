@@ -1240,7 +1240,6 @@ MonoBehaviour:
   HealthDisplay: {fileID: 1661478063372071048}
   healthBar: {fileID: 7481082941177164628}
   DeathMenu: {fileID: 204017307332416507}
-  projectiles: {fileID: 505926249592070244, guid: d6cd708df23bf82419b35c795df67e8b, type: 3}
 --- !u!54 &5780893397458585438
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1255,7 +1254,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!82 &8456492966372697484
 AudioSource:
