@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Monkey")// Allows player to be damaged once Enemy approaches player
         {
-            Health -= 1;
+            Health -= 3;
             Debug.Log("player health:" + Health);
             HealthDisplay.text = "Health:" + Health;
         }
@@ -62,10 +62,9 @@ public class PlayerMovement : MonoBehaviour
         {
            
             Debug.Log("Ouch");
-            Health -= 1;
+            Health -= 2;
             HealthDisplay.text = "Health:" + Health;
             collision.gameObject.GetComponent<objectScript>().DestroyProjectiles();
-
         }
     }
 
@@ -127,10 +126,17 @@ public class PlayerMovement : MonoBehaviour
                 head.transform.forward, out hitInfo, 10f))
             {
                 // Player hits enemies with raycast and enemies take damage
-                if (hitInfo.transform.tag == "Monkey" && mouseclick)
+                if (hitInfo.transform.tag == "Ranger" && mouseclick)
                 {
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
                     hitInfo.transform.GetComponent<EnemyAI>().Hurt(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
+                    GetComponent<AudioSource>().Play(); //plays gun sounds when player clicks on enemy
+                }
+
+                if (hitInfo.transform.tag == "Monkey" && mouseclick)
+                {
+                    Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
+                    hitInfo.transform.GetComponent<EnemyMonkey>().Hurt(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
                     GetComponent<AudioSource>().Play();
                 }
 
