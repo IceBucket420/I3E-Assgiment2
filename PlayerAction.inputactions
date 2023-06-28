@@ -69,18 +69,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "run",
-                    "type": "Button",
-                    "id": "8f117b83-5f9b-471c-9daf-044aebdfdf68",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "jump",
                     "type": "Button",
                     "id": "d8e842fd-9da6-4971-a5a9-a2709ff7965e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "sprint",
+                    "type": "Button",
+                    "id": "b6ec884c-050d-4b9e-8dd0-67bcccbba9c9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -354,23 +354,23 @@
                 },
                 {
                     "name": "",
-                    "id": "bb76477c-6f48-491b-b027-e8273c82c874",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "run",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "e8555ded-a0a6-49e7-b1c2-0978f3b73e64",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1c2ee65b-bca3-4958-8377-312b31063e55",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
