@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     public bool WearingHelmet = false;
     public bool HoldingGun = false;
     public bool Ready = false;
+    public bool run = false;
 
     public GameObject playerCamera;
     public Transform head;
@@ -58,6 +59,11 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Teleporter 1" && Ready == true )
         {
             SceneManager.LoadScene(3);
+        }
+
+        if (collision.gameObject.tag == "Teleporter 1" && Ready == false)
+        {
+            
         }
 
         if (collision.gameObject.tag == "projectiles")
@@ -94,6 +100,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void OnSprint()
+    {
+        run = true;
+    }
+
     private void Awake()
     {
 
@@ -115,15 +126,12 @@ public class PlayerMovement : MonoBehaviour
         if (currentHealth > 0)
         {
 
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (run == true)
             {
-                // Set current speed to run if shift is down
                 movementSpeed = sprintModifier;
             }
-            else
-            {
-                movementSpeed = 0.07f;
-            }
+
+            run = false;
 
             Debug.DrawLine(head.transform.position, head.transform.position + (head.transform.forward * 5f));
             RaycastHit hitInfo;
