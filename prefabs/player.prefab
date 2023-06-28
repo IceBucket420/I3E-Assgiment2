@@ -1275,7 +1275,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -1366,11 +1366,12 @@ MonoBehaviour:
   jumpStrenght: 5
   maxHealth: 100
   currentHealth: 0
-  sprintModifier: 0.1
+  sprintModifier: 0.5
   CurrentScene: 0
   WearingHelmet: 0
   HoldingGun: 0
   Ready: 0
+  run: 0
   playerCamera: {fileID: 5780893397028072065}
   head: {fileID: 5780893397458585435}
   HealthDisplay: {fileID: 1661478063372071048}
