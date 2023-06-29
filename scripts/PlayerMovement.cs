@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     public bool WearingHelmet = false;
     public bool HoldingGun = false;
     public bool Ready = false;
-    public bool run = false;
 
     public GameObject playerCamera;
     public Transform head;
@@ -56,14 +55,10 @@ public class PlayerMovement : MonoBehaviour
             healthBar.SetHealth(currentHealth);
         }
 
-        if (collision.gameObject.tag == "Teleporter 1" && Ready == false)
-        {
-            
-        }
 
         if (collision.gameObject.tag == "projectiles")
         {
-           
+
             Debug.Log("Ouch");
             currentHealth -= 2;
             HealthDisplay.text = currentHealth.ToString();
@@ -74,10 +69,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Teleporter 1" && Ready == true)
+        if (collision.gameObject.tag == "Teleporter 1")
         {
-            Debug.Log("Teleport");
-            SceneManager.LoadScene(3);
+            Debug.Log("Teleport to scene");
+            CurrentScene = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(CurrentScene + 1);
+
+        }
+        else
+        {
+            Debug.Log("Im not ready");
         }
     }
 
@@ -94,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
     void OnMove(InputValue value)
     {
         movementInput = value.Get<Vector2>();
+
     }
     void OnJump()  //space to jump
     {
@@ -104,10 +106,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnSprint()
-    {
-        run = true;
-    }
 
     private void Awake()
     {
@@ -130,12 +128,25 @@ public class PlayerMovement : MonoBehaviour
         if (currentHealth > 0)
         {
 
-            if (run == true)
+            if (Input.GetKey(KeyCode.LeftShift))
             {
                 movementSpeed = sprintModifier;
             }
+            else
+            {
+                movementSpeed = 0.07f;
+            }
 
-            run = false;
+          
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.D))
+            {
+                walkingSound.enabled = true;
+            }
+
+            else
+            {
+                walkingSound.enabled = false;
+            }
 
             Debug.DrawLine(head.transform.position, head.transform.position + (head.transform.forward * 5f));
             RaycastHit hitInfo;
@@ -147,30 +158,44 @@ public class PlayerMovement : MonoBehaviour
                 {
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
                     hitInfo.transform.GetComponent<EnemyAI>().Hurt(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
-                    GetComponent<AudioSource>().Play(); //plays gun sounds when player clicks on enemy
                 }
 
                 if (hitInfo.transform.tag == "Monkey" && mouseclick)
                 {
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
                     hitInfo.transform.GetComponent<EnemyMonkey>().Hurt(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
-                    GetComponent<AudioSource>().Play();
                 }
 
                 if (hitInfo.transform.tag == "helmet" && mouseclick)
                 {
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
-                    hitInfo.transform.GetComponent<objectScript>().Collected(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
-                    WearingHelmet = true;
+                    hitInfo.transform.GetComponent<objectScript>().Collected(); // calls destroy function
+                    WearingHelmet = true; // player must get helmet to exit room
                 }
 
                 if (hitInfo.transform.tag == "gun" && mouseclick)
                 {
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
                     hitInfo.transform.GetComponent<objectScript>().Collected(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
-                    HoldingGun = true;
+                    HoldingGun = true;// player must get gun to exit room
+                }
+                if (hitInfo.transform.tag == "door" && mouseclick && Ready == true)
+                {
+                    Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
+                    Debug.Log("Teleport to scene");
+                    CurrentScene = SceneManager.GetActiveScene().buildIndex;
+                    SceneManager.LoadScene(CurrentScene + 1);
+                }
+
+                if (hitInfo.transform.tag == "Teleport" && mouseclick)
+                {
+                    Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
+                    Debug.Log("Teleport to scene");
+                    CurrentScene = SceneManager.GetActiveScene().buildIndex;
+                    SceneManager.LoadScene(CurrentScene + 1);
                 }
             }
+
 
             if (HoldingGun == true && WearingHelmet == true)
             {
@@ -180,7 +205,7 @@ public class PlayerMovement : MonoBehaviour
 
             mouseclick = false; // detect if player clicked
 
-            
+
             // Player movement 
             Vector3 forwardDir = transform.forward;
             forwardDir *= movementInput.y;
@@ -190,8 +215,10 @@ public class PlayerMovement : MonoBehaviour
 
             GetComponent<Rigidbody>().MovePosition(transform.position + (forwardDir + rightDir) * movementSpeed);
             //transform.position += (forwardDir + rightDir) * movementSpeed;
-          
-               
+
+
+
+
             // FOr player to look left and right
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + rotationInput * rotationSpeed);
 
@@ -208,13 +235,14 @@ public class PlayerMovement : MonoBehaviour
             playerCamera.transform.rotation = Quaternion.Euler(headRot);
 
             isGrounded = false;
-
         }
-        else // When Player dies
+
+        else
         {
-            CurrentScene = SceneManager.GetActiveScene().buildIndex; // When player dies, this would track the scene int the player has died in
             DeathMenu.gameObject.SetActive(true);
+            CurrentScene = SceneManager.GetActiveScene().buildIndex;
             currentHealth = 50;
         }
     }
 }
+
