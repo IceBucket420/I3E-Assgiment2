@@ -1,39 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class door : MonoBehaviour
 {
     public Animator animator;
     public Animator animator2;
-    public Animator animator3;
-    public Animator animator4;
     public AudioSource doorSound;
+    public TextMeshProUGUI doorText;
 
     private void OnTriggerEnter(Collider other)
     {
-        animator.SetBool("isOpen", true);
-        animator2.SetBool("isOpen", true);
-        doorSound.Play();
 
         if(other.gameObject.GetComponent<PlayerMovement>().Ready == true)
         {
-            animator3.SetBool("isOpen", true);
-            animator4.SetBool("isOpen", true);
+            animator.SetBool("isOpen", true);
+            animator2.SetBool("isOpen", true);
             doorSound.Play();
+        }
+        else
+        {
+            Debug.Log("You cannot exit. Grab your helmet and gun.");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        animator.SetBool("isOpen", false);
-        animator2.SetBool("isOpen", false);
-        doorSound.Play();
 
         if (other.gameObject.GetComponent<PlayerMovement>().Ready == true)
         {
-            animator3.SetBool("isOpen", false);
-            animator4.SetBool("isOpen", false);
+            animator.SetBool("isOpen", false);
+            animator2.SetBool("isOpen", false);
             doorSound.Play();
         }
     }
