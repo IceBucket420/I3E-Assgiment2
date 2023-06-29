@@ -52,13 +52,8 @@ public class PlayerMovement : MonoBehaviour
         {
             currentHealth -= 3;
             Debug.Log("player health:" + currentHealth);
-            HealthDisplay.text = "Health:" + currentHealth;
+            HealthDisplay.text = currentHealth.ToString();
             healthBar.SetHealth(currentHealth);
-        }
-
-        if (collision.gameObject.tag == "Teleporter 1" && Ready == true )
-        {
-            SceneManager.LoadScene(3);
         }
 
         if (collision.gameObject.tag == "Teleporter 1" && Ready == false)
@@ -71,9 +66,18 @@ public class PlayerMovement : MonoBehaviour
            
             Debug.Log("Ouch");
             currentHealth -= 2;
-            HealthDisplay.text = "Health:" + currentHealth;
+            HealthDisplay.text = currentHealth.ToString();
             collision.gameObject.GetComponent<objectScript>().DestroyProjectiles();
             healthBar.SetHealth(currentHealth);
+        }
+    }
+
+    public void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Teleporter 1" && Ready == true)
+        {
+            Debug.Log("Teleport");
+            SceneManager.LoadScene(3);
         }
     }
 
@@ -117,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
         DeathMenu.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
-        HealthDisplay.text = "Health: " + currentHealth;
+        HealthDisplay.text = currentHealth.ToString();
     }
 
     // Update is called once per frame
@@ -171,6 +175,7 @@ public class PlayerMovement : MonoBehaviour
             if (HoldingGun == true && WearingHelmet == true)
             {
                 Ready = true;
+                //Debug.Log("Im ready");
             }
 
             mouseclick = false; // detect if player clicked
@@ -185,15 +190,8 @@ public class PlayerMovement : MonoBehaviour
 
             GetComponent<Rigidbody>().MovePosition(transform.position + (forwardDir + rightDir) * movementSpeed);
             //transform.position += (forwardDir + rightDir) * movementSpeed;
-            //if (gameObject.transform)
-            //{
-            //    if (Time.time > 3f)
-            //    {
-            //        walkingSound.Play();
-            //        Debug.Log("Im walking");
-            //    }
-                
-            //}
+          
+               
             // FOr player to look left and right
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + rotationInput * rotationSpeed);
 
