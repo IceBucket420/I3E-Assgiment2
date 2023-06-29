@@ -1370,13 +1370,12 @@ MonoBehaviour:
   WearingHelmet: 0
   HoldingGun: 0
   Ready: 0
-  run: 0
-  walking: 0
   playerCamera: {fileID: 5780893397028072065}
   head: {fileID: 5780893397458585435}
   HealthDisplay: {fileID: 1661478063372071048}
   DeathMenu: {fileID: 204017307332416507}
   walkingSound: {fileID: 735514596285294848}
+  sprintSound: {fileID: 776083545317628511, guid: 21b7e7cc9d0dd5a478ffebf0c68372c6, type: 3}
   healthBar: {fileID: 1233234815560088098}
 --- !u!54 &5780893397458585438
 Rigidbody:
@@ -1401,11 +1400,11 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5780893397458585431}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -8021114652560464316, guid: b4d8106a602febb458dfd35850e5d19c, type: 2}
-  m_audioClip: {fileID: 8300000, guid: b8da35185c17df440a0d9e0309ac22a3, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: b662731f964d624449b092d4198147de, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
