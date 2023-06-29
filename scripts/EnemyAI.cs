@@ -17,6 +17,9 @@ public class EnemyAI : MonoBehaviour
     //Player Attack
     public int PlayerAttack = 2;
 
+    //gun sound
+    public AudioSource shoot;
+
     //patrolling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -117,6 +120,7 @@ public class EnemyAI : MonoBehaviour
         //enemy gets hurt when this function is called
         EnemyHealth -= PlayerAttack;
         Debug.Log(" Enemy health: " + EnemyHealth);
+        shoot.Play();
 
         if (EnemyHealth <= 0)
         {
