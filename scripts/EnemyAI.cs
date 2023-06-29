@@ -12,7 +12,9 @@ public class EnemyAI : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
 
     //Health of enemies
-    public int EnemyHealth = 5;
+    public int MaxEnemyHealth = 5;
+    public int CurrentEnemyHealth = 5;
+    public HealthBar healthBar;
 
     //Player Attack
     public int PlayerAttack = 2;
@@ -33,6 +35,7 @@ public class EnemyAI : MonoBehaviour
     //States
     public float sightRange = 20, attackRange = 12;
     public bool playerInSightRange, playerInAttackRange;
+
 
     private void Awake()
     {
@@ -118,18 +121,25 @@ public class EnemyAI : MonoBehaviour
     public void Hurt()
     {
         //enemy gets hurt when this function is called
-        EnemyHealth -= PlayerAttack;
-        Debug.Log(" Enemy health: " + EnemyHealth);
-        shoot.Play();
+        CurrentEnemyHealth -= PlayerAttack;
+        healthBar.SetHealth(CurrentEnemyHealth);
+        Debug.Log(" Enemy health: " + CurrentEnemyHealth);
+        shoot.Play(); 
 
-        if (EnemyHealth <= 0)
+        if (CurrentEnemyHealth <= 0)
         {
             Destroy(gameObject); // destroy enemy when player kills it
         }
 
     }
 
-        private void OnDrawnGizmosSelected()
+    private void Start()
+    {
+        CurrentEnemyHealth = MaxEnemyHealth;
+        healthBar.SetMaxHealth(MaxEnemyHealth);
+    }
+
+    private void OnDrawnGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
