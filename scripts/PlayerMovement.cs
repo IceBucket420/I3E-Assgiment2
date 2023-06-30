@@ -34,7 +34,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform head;
     public TextMeshProUGUI HealthDisplay;
     public GameObject DeathMenu;
+    public GameObject playerPanel;
     public AudioSource walkingSound;
+    public AudioSource DeathSound;
+
 
 
     public HealthBar healthBar;
@@ -55,12 +58,30 @@ public class PlayerMovement : MonoBehaviour
             healthBar.SetHealth(currentHealth);
         }
 
+        if (collision.gameObject.tag == "boss")// Allows player to be damaged once Enemy approaches player
+        {
+            currentHealth -= 10;
+            Debug.Log("player health:" + currentHealth);
+            HealthDisplay.text = currentHealth.ToString();
+            healthBar.SetHealth(currentHealth);
+        }
+
 
         if (collision.gameObject.tag == "projectiles")
         {
 
             Debug.Log("Ouch");
             currentHealth -= 2;
+            HealthDisplay.text = currentHealth.ToString();
+            collision.gameObject.GetComponent<objectScript>().DestroyProjectiles();
+            healthBar.SetHealth(currentHealth);
+        }
+
+        if (collision.gameObject.tag == "projectiles2")
+        {
+
+            Debug.Log("Ouch");
+            currentHealth -= 5;
             HealthDisplay.text = currentHealth.ToString();
             collision.gameObject.GetComponent<objectScript>().DestroyProjectiles();
             healthBar.SetHealth(currentHealth);
@@ -194,6 +215,12 @@ public class PlayerMovement : MonoBehaviour
                     CurrentScene = SceneManager.GetActiveScene().buildIndex;
                     SceneManager.LoadScene(CurrentScene + 1);
                 }
+
+                if (hitInfo.transform.tag == "boss" && mouseclick)
+                {
+                    Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
+                    hitInfo.transform.GetComponent<EnemyAI>().Hurt(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
+                }
             }
 
 
@@ -239,10 +266,24 @@ public class PlayerMovement : MonoBehaviour
 
         else
         {
-            DeathMenu.gameObject.SetActive(true);
+            walkingSound.enabled = false;
+            //DeathSound.enabled = true;
+            Debug.Log("Im Dead");
+            //Destroy(gameObject);
+            //PlayerDied();
             CurrentScene = SceneManager.GetActiveScene().buildIndex;
-            currentHealth = 50;
+            //SceneManager.LoadScene(6);
+            //currentHealth = 50;
+            DeathMenu.SetActive(true);
+            //FindObjectOfType<EnemyAI>().DestroyEnemies();
+            playerPanel.SetActive(false);
         }
+
+        //void PlayerDied()
+        //{
+        //    GameManager.instance.GameOver();
+        //    Destroy(gameObject);
+        //}
     }
 }
 
