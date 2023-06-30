@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject QuitMenu;
     public GameObject MainMenuCanvas;
     public GameObject AudioCanvas;
+    public GameObject DeathCanvas;
     public Animator transition;
     public float transitionTime = 1f;
     public AudioSource ButtonSound;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
         {
             GameObject player = Instantiate(PlayerPrefab, playerSpot.transform.position, playerSpot.transform.rotation);
             activePlayer = player.GetComponent<PlayerMovement>();
+            Debug.Log("Player is spawned");
         }
         else
         {
@@ -110,8 +112,8 @@ public class GameManager : MonoBehaviour
 
     public void OnMainMenuButton()
     {
-        ButtonSound.Play();
-        StartCoroutine(LoadLevel(0));
+       //ButtonSound.Play();
+        SceneManager.LoadScene(0);
     }
 
     public void OnRestartButton(int i)
@@ -134,8 +136,13 @@ public class GameManager : MonoBehaviour
     {
         QuitMenu.gameObject.SetActive(false);
         AudioCanvas.gameObject.SetActive(false);
+        DeathCanvas.SetActive(false);
     }
 
+    public void IncreaseScore()
+    {
+        Score = +1;
+    }
 
     void Update()
     {
