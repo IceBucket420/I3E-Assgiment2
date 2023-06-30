@@ -521,6 +521,7 @@ MonoBehaviour:
   QuitMenu: {fileID: 698487690}
   MainMenuCanvas: {fileID: 175062887}
   AudioCanvas: {fileID: 569009604}
+  DeathCanvas: {fileID: 0}
   transition: {fileID: 0}
   transitionTime: 1
   ButtonSound: {fileID: 611567457}
