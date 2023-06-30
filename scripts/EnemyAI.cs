@@ -46,15 +46,19 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        //Check for sight and attack range
-        player = GameObject.FindObjectOfType<PlayerMovement>().transform;
+        if (player != null)
+        {
+            //Check for sight and attack range
+            player = GameObject.FindObjectOfType<PlayerMovement>().transform;
 
-        playerInAttackRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInSightRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+            playerInAttackRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+            playerInSightRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patrolling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
+            if (!playerInSightRange && !playerInAttackRange) Patrolling();
+            if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+            if (playerInSightRange && playerInAttackRange) AttackPlayer();
+        }
+        
 
     }
 
@@ -104,8 +108,8 @@ public class EnemyAI : MonoBehaviour
         {
             // attack code here
             Rigidbody rb = Instantiate(projectiles, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 12f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 3f, ForceMode.Impulse);
+            rb.AddForce(transform.forward * 24f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 4f, ForceMode.Impulse);
             //
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -131,6 +135,12 @@ public class EnemyAI : MonoBehaviour
             Destroy(gameObject); // destroy enemy when player kills it
         }
 
+    }
+
+    public void DestroyEnemies()
+    {
+        Debug.Log("Enemies destroyed");
+        Destroy(gameObject);
     }
 
     private void Start()

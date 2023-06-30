@@ -7,12 +7,12 @@ public class objectScript : MonoBehaviour
     {
         if (gameObject.tag == "helmet")
         {
-            GetComponent<AudioSource>().Play();
+            //GetComponent<AudioSource>().Play();
             Destroy(gameObject);
         }
         if (gameObject.tag == "gun")
         {
-            GetComponent<AudioSource>().Play();
+            //GetComponent<AudioSource>().Play();
             Destroy(gameObject);
         }
 
@@ -21,6 +21,10 @@ public class objectScript : MonoBehaviour
     public void DestroyProjectiles()
     {
         if (gameObject.tag == "projectiles")
+        {
+            Destroy(gameObject);
+        }
+        if (gameObject.tag == "projectiles2")
         {
             Destroy(gameObject);
         }
@@ -35,15 +39,5 @@ public class objectScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+   
 }
