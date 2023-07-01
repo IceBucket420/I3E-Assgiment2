@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using System.Collections;
+using System.Collections.Generic;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -19,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
     public int maxHealth = 100;
     public int currentHealth;
-    float timerVal = 0;
     public float sprintModifier = 0.1f;
     private bool isGrounded = false;
     bool mouseclick = false;
@@ -29,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public bool WearingHelmet = false;
     public bool HoldingGun = false;
     public bool Ready = false;
+    public bool coreCollected = false;
+    public bool canCollect = false;
 
     public GameObject playerCamera;
     public Transform head;
@@ -37,7 +40,9 @@ public class PlayerMovement : MonoBehaviour
     public GameObject playerPanel;
     public AudioSource walkingSound;
     public AudioSource DeathSound;
-
+    public GameObject Core;
+    public Animator transition;
+    public float transitionTime = 1f;
 
 
     public HealthBar healthBar;
@@ -60,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.gameObject.tag == "boss")// Allows player to be damaged once Enemy approaches player
         {
-            currentHealth -= 10;
+            currentHealth -= 5;
             Debug.Log("player health:" + currentHealth);
             HealthDisplay.text = currentHealth.ToString();
             healthBar.SetHealth(currentHealth);
@@ -86,22 +91,27 @@ public class PlayerMovement : MonoBehaviour
             collision.gameObject.GetComponent<objectScript>().DestroyProjectiles();
             healthBar.SetHealth(currentHealth);
         }
-    }
 
-    public void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "Teleporter 1")
+        if (collision.gameObject.tag == "die")
         {
-            Debug.Log("Teleport to scene");
-            CurrentScene = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(CurrentScene + 1);
-
-        }
-        else
-        {
-            Debug.Log("Im not ready");
+            Destroy(gameObject);
         }
     }
+
+    //public void OnTriggerEnter(Collider collision)
+    //{
+    //    if (collision.gameObject.tag == "Teleporter 1")
+    //    {
+    //        Debug.Log("Teleport to scene");
+    //        CurrentScene = SceneManager.GetActiveScene().buildIndex;
+    //        SceneManager.LoadScene(CurrentScene + 1);
+
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Im not ready");
+    //    }
+    //}
 
     void OnFire()
     {
@@ -127,6 +137,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(levelIndex);
+    }
+
 
     private void Awake()
     {
@@ -141,13 +158,13 @@ public class PlayerMovement : MonoBehaviour
         DeathMenu.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         HealthDisplay.text = currentHealth.ToString();
+        // Update is called once per frame
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (currentHealth > 0)
         {
+            CurrentScene = SceneManager.GetActiveScene().buildIndex;
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -158,8 +175,8 @@ public class PlayerMovement : MonoBehaviour
                 movementSpeed = 0.07f;
             }
 
-          
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.D))
+
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
             {
                 walkingSound.enabled = true;
             }
@@ -178,34 +195,26 @@ public class PlayerMovement : MonoBehaviour
                 if (hitInfo.transform.tag == "Ranger" && mouseclick)
                 {
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
-                    hitInfo.transform.GetComponent<EnemyAI>().Hurt(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
-                }
-
-                if (hitInfo.transform.tag == "Monkey" && mouseclick)
-                {
-                    Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
-                    hitInfo.transform.GetComponent<EnemyMonkey>().Hurt(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
+                    hitInfo.transform.GetComponent<EnemyAI>().Hurt();// Gets the enemyscript, and calls the functions with reduced the health of enemies
                 }
 
                 if (hitInfo.transform.tag == "helmet" && mouseclick)
                 {
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
                     hitInfo.transform.GetComponent<objectScript>().Collected(); // calls destroy function
-                    WearingHelmet = true; // player must get helmet to exit room
                 }
 
                 if (hitInfo.transform.tag == "gun" && mouseclick)
                 {
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
                     hitInfo.transform.GetComponent<objectScript>().Collected(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
-                    HoldingGun = true;// player must get gun to exit room
                 }
                 if (hitInfo.transform.tag == "door" && mouseclick && Ready == true)
                 {
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
                     Debug.Log("Teleport to scene");
                     CurrentScene = SceneManager.GetActiveScene().buildIndex;
-                    SceneManager.LoadScene(CurrentScene + 1);
+                    StartCoroutine(LoadLevel(CurrentScene + 1));
                 }
 
                 if (hitInfo.transform.tag == "Teleport" && mouseclick)
@@ -213,7 +222,14 @@ public class PlayerMovement : MonoBehaviour
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
                     Debug.Log("Teleport to scene");
                     CurrentScene = SceneManager.GetActiveScene().buildIndex;
-                    SceneManager.LoadScene(CurrentScene + 1);
+                    StartCoroutine(LoadLevel(CurrentScene + 1));
+                }
+
+                if (hitInfo.transform.tag == "Teleporter 1" && mouseclick && coreCollected == true)
+                {
+                    Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
+                    Debug.Log("Teleport to scene");
+                    StartCoroutine(LoadLevel(CurrentScene+1));
                 }
 
                 if (hitInfo.transform.tag == "boss" && mouseclick)
@@ -221,6 +237,20 @@ public class PlayerMovement : MonoBehaviour
                     Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
                     hitInfo.transform.GetComponent<EnemyAI>().Hurt(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
                 }
+
+                if (hitInfo.transform.tag == "core" && mouseclick && canCollect == true)
+                {
+                    Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
+                    hitInfo.transform.GetComponent<objectScript>().Collected(); // Gets the enemyscript, and calls the functions with reduced the health of enemies
+                }
+                if (hitInfo.transform.tag == "reactor" && mouseclick)
+                {
+                    Debug.Log("raycast hit: " + hitInfo.transform.gameObject.name);
+                    Debug.Log("Teleport to scene");
+                    StartCoroutine(LoadLevel(CurrentScene + 1));
+                   // Destroy(gameObject);
+                }
+
             }
 
 
@@ -262,6 +292,8 @@ public class PlayerMovement : MonoBehaviour
             playerCamera.transform.rotation = Quaternion.Euler(headRot);
 
             isGrounded = false;
+
+            
         }
 
         else
@@ -286,4 +318,5 @@ public class PlayerMovement : MonoBehaviour
         //}
     }
 }
+
 

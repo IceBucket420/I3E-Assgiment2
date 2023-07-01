@@ -9,12 +9,10 @@ public class GameManager : MonoBehaviour
 {
     public GameObject PlayerPrefab;
     private PlayerMovement activePlayer;
-    public static int Score;
     public static GameManager instance;
     public GameObject QuitMenu;
     public GameObject MainMenuCanvas;
     public GameObject AudioCanvas;
-    public GameObject DeathCanvas;
     public Animator transition;
     public float transitionTime = 1f;
     public AudioSource ButtonSound;
@@ -56,7 +54,7 @@ public class GameManager : MonoBehaviour
     public void OnStartButton()
     {
         ButtonSound.Play();
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
         //StartCoroutine(LoadLevel(2));
         //DontDestroyOnLoad(QuitMenu);
         MainMenuCanvas.gameObject.SetActive(false);
@@ -136,12 +134,6 @@ public class GameManager : MonoBehaviour
     {
         QuitMenu.gameObject.SetActive(false);
         AudioCanvas.gameObject.SetActive(false);
-        DeathCanvas.SetActive(false);
-    }
-
-    public void IncreaseScore()
-    {
-        Score = +1;
     }
 
     void Update()

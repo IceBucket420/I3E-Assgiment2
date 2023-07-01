@@ -135,6 +135,12 @@ public class EnemyAI : MonoBehaviour
             Destroy(gameObject); // destroy enemy when player kills it
         }
 
+        if (gameObject.tag == "boss" && CurrentEnemyHealth == 0)
+        {
+            Debug.Log("boss defeated");
+            FindObjectOfType<PlayerMovement>().canCollect = true;
+        }
+
     }
 
     public void DestroyEnemies()

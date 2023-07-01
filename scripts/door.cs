@@ -9,7 +9,6 @@ public class door : MonoBehaviour
     public Animator animator;
     public Animator animator2;
     public AudioSource doorSound;
-    public TextMeshProUGUI doorText;
 
     private void OnTriggerEnter(Collider other)
     {
