@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3671437564224183134}
   - component: {fileID: 3671437564224183135}
-  - component: {fileID: 3005433186415996009}
-  - component: {fileID: 573052352808590618}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: playerSpot
@@ -47,34 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 5780893397458585431, guid: acbf911ec3a21a34aa10709e8bbd21a6, type: 3}
+  Score: 0
   QuitMenu: {fileID: 0}
   MainMenuCanvas: {fileID: 0}
   AudioCanvas: {fileID: 0}
   transition: {fileID: 0}
   transitionTime: 1
   ButtonSound: {fileID: 0}
---- !u!114 &3005433186415996009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3671437564224183133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c3887e31e533f34b82c0acd193d1b23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &573052352808590618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3671437564224183133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb4ccd2c54d85b64cb709129315dbe16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DeathPanel: {fileID: 5780893397458585431, guid: acbf911ec3a21a34aa10709e8bbd21a6, type: 3}
