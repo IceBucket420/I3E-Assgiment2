@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public GameObject QuitMenu;
     public GameObject MainMenuCanvas;
     public GameObject AudioCanvas;
+    public GameObject HowToPlayCanvas;
+    public GameObject CreditsCanvas;
     public Animator transition;
     public float transitionTime = 1f;
     public AudioSource ButtonSound;
@@ -108,6 +110,40 @@ public class GameManager : MonoBehaviour
         AudioCanvas.gameObject.SetActive(false);
     }
 
+
+    public void OnCreditsButton()
+    {
+        Debug.Log("back is hit");
+        ButtonSound.Play();
+        //StartCoroutine(LoadLevel(0));
+        CreditsCanvas.gameObject.SetActive(true);
+    }
+
+    public void OnHowToPlayButton()
+    {
+        Debug.Log("back is hit");
+        ButtonSound.Play();
+        //StartCoroutine(LoadLevel(0));
+        HowToPlayCanvas.gameObject.SetActive(true);
+    }
+
+    public void OnBackButton2()
+    {
+        Debug.Log("back is hit");
+        ButtonSound.Play();
+        //StartCoroutine(LoadLevel(0));
+        HowToPlayCanvas.gameObject.SetActive(false);
+    }
+
+    public void OnBackButton3()
+    {
+        Debug.Log("back is hit");
+        ButtonSound.Play();
+        //StartCoroutine(LoadLevel(0));
+        CreditsCanvas.gameObject.SetActive(false);
+    }
+
+
     public void OnMainMenuButton()
     {
        //ButtonSound.Play();
@@ -132,6 +168,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        CreditsCanvas.gameObject.SetActive(false);
+        HowToPlayCanvas.gameObject.SetActive(false);
         QuitMenu.gameObject.SetActive(false);
         AudioCanvas.gameObject.SetActive(false);
     }
