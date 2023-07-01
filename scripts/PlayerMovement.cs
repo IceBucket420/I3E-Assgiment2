@@ -1,3 +1,10 @@
+/*
+ * Author: Pang Le Xin 
+ * Date: 20/06/2023
+ * Description: Controls the player actions, inputs, raycast and player movement. Keep tracks of the player health as well
+ */
+
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,42 +17,129 @@ using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    /// <summary>
+    /// movement Input 
+    /// </summary>
     Vector3 movementInput = Vector3.zero;
+    /// <summary>
+    /// Movement Speed
+    /// </summary>
     float movementSpeed = 0.07f;
+    /// <summary>
+    /// Rotation input
+    /// </summary>
     Vector3 rotationInput = Vector3.zero;
+    /// <summary>
+    /// Rotation Speed
+    /// </summary>
     float rotationSpeed = 1f;
+    /// <summary>
+    /// Roatation of camera Input
+    /// </summary>
     Vector3 headRotationInput = Vector3.zero;
+    /// <summary>
+    /// Jump Streght
+    /// </summary>
     public float jumpStrenght = 5f;
 
-
+    /// <summary>
+    /// Maximum Health of player
+    /// </summary>
     public int maxHealth = 100;
+    /// <summary>
+    /// current health of player
+    /// </summary>
     public int currentHealth;
+    /// <summary>
+    /// Sprint speed
+    /// </summary>
     public float sprintModifier = 0.09f;
+    /// <summary>
+    /// bool that check if player is on ground
+    /// </summary>
     private bool isGrounded = false;
+    /// <summary>
+    /// bool checks for mouse clicks
+    /// </summary>
     bool mouseclick = false;
+    /// <summary>
+    /// Current scene interger
+    /// </summary>
     public int CurrentScene;
 
     //Item collection
+
+    /// <summary>
+    /// Check if player is Wearing Helmet
+    /// </summary>
     public bool WearingHelmet = false;
+    /// <summary>
+    /// Check if player is holding gun
+    /// </summary>
     public bool HoldingGun = false;
+    /// <summary>
+    /// Check id player is ready with the helmet and gun
+    /// </summary>
     public bool Ready = false;
+    /// <summary>
+    /// Check if player collected core
+    /// </summary>
     public bool coreCollected = false;
+    /// <summary>
+    /// Check if player can collect the core
+    /// </summary>
     public bool canCollect = false;
 
+    /// <summary>
+    /// GameObject that find player camera
+    /// </summary>
     public GameObject playerCamera;
+    /// <summary>
+    /// Head of the player aka camera
+    /// </summary>
     public Transform head;
+    /// <summary>
+    /// TextMesh of player health
+    /// </summary>
     public TextMeshProUGUI HealthDisplay;
+    /// <summary>
+    /// Game object Death Menu canvas for player
+    /// </summary>
     public GameObject DeathMenu;
+    /// <summary>
+    /// Game object Player panel canvas for player
+    /// </summary>
     public GameObject playerPanel;
+    /// <summary>
+    /// Audiosource of player walking sound
+    /// </summary>
     public AudioSource walkingSound;
+    /// <summary>
+    /// Audiosource of player Death Sound
+    /// </summary>
     public AudioSource DeathSound;
+    /// <summary>
+    /// Game object of the crystal core
+    /// </summary>
     public GameObject Core;
+    /// <summary>
+    /// Animator of the fade transitiom
+    /// </summary>
     public Animator transition;
+    /// <summary>
+    /// float of transtion time 
+    /// </summary>
     public float transitionTime = 1f;
 
-
+    /// <summary>
+    /// Reference script Healthbar
+    /// </summary>
     public HealthBar healthBar;
+
+    /// <summary>
+    /// Check if player is on the ground
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionStay(Collision collision)
 
     {
@@ -53,15 +147,12 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log("Im grounded");// to test if player is grounded
     }
 
+    /// <summary>
+    /// If player collided with enemies or projectiles player loses health
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Monkey")// Allows player to be damaged once Enemy approaches player
-        {
-            currentHealth -= 3;
-            Debug.Log("player health:" + currentHealth);
-            HealthDisplay.text = currentHealth.ToString();
-            healthBar.SetHealth(currentHealth);
-        }
 
         if (collision.gameObject.tag == "boss")// Allows player to be damaged once Enemy approaches player
         {
@@ -113,21 +204,32 @@ public class PlayerMovement : MonoBehaviour
     //    }
     //}
 
+    /// <summary>
+    /// player input actions that tracks player mouseclick
+    /// </summary>
     void OnFire()
     {
         mouseclick = true;
     }
+    /// <summary>
+    /// player input actions that tracks player rotation 
+    /// </summary>
     void OnLook(InputValue value)
     {
         rotationInput.y = value.Get<Vector2>().x;
         headRotationInput.x = -value.Get<Vector2>().y;
     }
-    // Start is called before the first frame update
+    /// <summary>
+    /// player input actions that tracks player movement
+    /// </summary>
     void OnMove(InputValue value)
     {
         movementInput = value.Get<Vector2>();
 
     }
+    /// <summary>
+    /// player input actions that tracks player spacebar
+    /// </summary>
     void OnJump()  //space to jump
     {
         if (isGrounded == true)
@@ -137,6 +239,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Give time for the transition of the scenes
+    /// </summary>
+    /// <param name="levelIndex"></param>
+    /// <returns></returns>
     IEnumerator LoadLevel(int levelIndex)
     {
         transition.SetTrigger("Start");
@@ -144,13 +251,17 @@ public class PlayerMovement : MonoBehaviour
         SceneManager.LoadScene(levelIndex);
     }
 
-
+    /// <summary>
+    /// Awake function
+    /// </summary>
     private void Awake()
     {
 
         DontDestroyOnLoad(gameObject);
     }
-
+    /// <summary>
+    /// Start function
+    /// </summary>
     void Start()
     {
         currentHealth = maxHealth;
@@ -160,6 +271,10 @@ public class PlayerMovement : MonoBehaviour
         HealthDisplay.text = currentHealth.ToString();
         // Update is called once per frame
     }
+
+    /// <summary>
+    /// update function
+    /// </summary>
     void Update()
     {
         if (currentHealth > 0)
@@ -311,11 +426,6 @@ public class PlayerMovement : MonoBehaviour
             playerPanel.SetActive(false);
         }
 
-        //void PlayerDied()
-        //{
-        //    GameManager.instance.GameOver();
-        //    Destroy(gameObject);
-        //}
     }
 }
 

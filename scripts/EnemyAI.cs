@@ -1,3 +1,9 @@
+/*
+ * Author: Pang Le Xin (with reference of dave/ GameDevelopment on YT
+ * Date: 28/06/2023
+ * Description: 
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,38 +11,89 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    /// <summary>
+    /// Navmesh agent 
+    /// </summary>
     public NavMeshAgent agent;
 
+    /// <summary>
+    /// Transform of player
+    /// </summary>
     public Transform player;
 
+    /// <summary>
+    /// Layer mask of ground and player
+    /// </summary>
     public LayerMask whatIsGround, whatIsPlayer;
 
     //Health of enemies
+
+    /// <summary>
+    /// Maximum of the enemy 
+    /// </summary>
     public int MaxEnemyHealth = 5;
+    /// <summary>
+    /// the current health of the enemy
+    /// </summary>
     public int CurrentEnemyHealth = 5;
+    /// <summary>
+    /// reference the healthbar script
+    /// </summary>
     public HealthBar healthBar;
 
     //Player Attack
+    /// <summary>
+    /// interger of the player attack dmg
+    /// </summary>
     public int PlayerAttack = 2;
 
     //gun sound
+    /// <summary>
+    /// Audio source of the gun sound
+    /// </summary>
     public AudioSource shoot;
 
     //patrolling
+    /// <summary>
+    /// Vector 3 of walk point
+    /// </summary>
     public Vector3 walkPoint;
+    /// <summary>
+    /// bool of walk point set
+    /// </summary>
     bool walkPointSet;
+    /// <summary>
+    /// float of walk point range
+    /// </summary>
     public float walkPointRange = 5;
+    /// <summary>
+    /// Gameobject of  projectiles
+    /// </summary>
     public GameObject projectiles;
 
     //Attacking
+    /// <summary>
+    /// float of time Between attacks
+    /// </summary>
     public float timeBetweenAttacks = 1;
+    /// <summary>
+    /// float of already attacked
+    /// </summary>
     bool alreadyAttacked;
 
     //States
+    /// <summary>
+    /// float of the sight range and attack range of enemies
+    /// </summary>
     public float sightRange = 20, attackRange = 12;
+    /// <summary>
+    /// bool of player in sight range, and player in attack range
+    /// </summary>
     public bool playerInSightRange, playerInAttackRange;
 
-
+    /// <summary>
+    /// awake function
+    /// </summary>
     private void Awake()
     {
         //player = GameObject.FindObjectOfType<PlayerMovement>().transform;
@@ -44,6 +101,9 @@ public class EnemyAI : MonoBehaviour
     
     }
 
+    /// <summary>
+    /// update function
+    /// </summary>
     private void Update()
     {
         if (player != null)
@@ -62,6 +122,9 @@ public class EnemyAI : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// patrolling function
+    /// </summary>
     private void Patrolling()
     {
         if (!walkPointSet) SearchWalkPoint();
@@ -80,6 +143,9 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Search walk point fucntion
+    /// </summary>
     private void SearchWalkPoint()
     {
         //calculate random point in range
@@ -93,10 +159,17 @@ public class EnemyAI : MonoBehaviour
             walkPointSet = true;
         }
     }
+    /// <summary>
+    /// chase player function
+    /// </summary>
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
     }
+
+    /// <summary>
+    /// attack player function
+    /// </summary>
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
@@ -117,11 +190,17 @@ public class EnemyAI : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// rest attack function
+    /// </summary>
     private void ResetAttack()
     {
         alreadyAttacked = false;
     }
 
+    /// <summary>
+    /// Hurt function 
+    /// </summary>
     public void Hurt()
     {
         //enemy gets hurt when this function is called
@@ -143,26 +222,14 @@ public class EnemyAI : MonoBehaviour
 
     }
 
-    public void DestroyEnemies()
-    {
-        Debug.Log("Enemies destroyed");
-        Destroy(gameObject);
-    }
-
+    /// <summary>
+    /// start function
+    /// </summary>
     private void Start()
     {
         CurrentEnemyHealth = MaxEnemyHealth;
         healthBar.SetMaxHealth(MaxEnemyHealth);
     }
-
-    private void OnDrawnGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
-    }
-
 
 
 }
