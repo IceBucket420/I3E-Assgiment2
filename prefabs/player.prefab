@@ -689,7 +689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -390, y: -113}
+  m_AnchoredPosition: {x: -1536, y: -143}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3126618267684430655
@@ -1440,20 +1440,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpStrenght: 5
-  maxHealth: 20
+  maxHealth: 100
   currentHealth: 0
   sprintModifier: 0.5
   CurrentScene: 0
   WearingHelmet: 0
   HoldingGun: 0
   Ready: 0
+  coreCollected: 0
+  canCollect: 0
   playerCamera: {fileID: 5780893397458585431}
+  gameManager: {fileID: 0}
   head: {fileID: 5780893397458585435}
   HealthDisplay: {fileID: 1661478063372071048}
   DeathMenu: {fileID: 204017307332416507}
   playerPanel: {fileID: 4295133260852281886}
   walkingSound: {fileID: 735514596285294848}
   DeathSound: {fileID: 8948407652480447772}
+  scoreDisplay: {fileID: 0}
   healthBar: {fileID: 1233234815560088098}
 --- !u!54 &5780893397458585438
 Rigidbody:
@@ -1678,7 +1682,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.8369, y: 12}
+  m_AnchoredPosition: {x: 7.836914, y: 12}
   m_SizeDelta: {x: 69.9446, y: -53.9063}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2502471514153577108
