@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     public int maxHealth = 100;
     public int currentHealth;
-    public float sprintModifier = 0.1f;
+    public float sprintModifier = 0.09f;
     private bool isGrounded = false;
     bool mouseclick = false;
     public int CurrentScene;
