@@ -1457,7 +1457,9 @@ MonoBehaviour:
   playerPanel: {fileID: 4295133260852281886}
   walkingSound: {fileID: 735514596285294848}
   DeathSound: {fileID: 8948407652480447772}
-  scoreDisplay: {fileID: 0}
+  Core: {fileID: 6197493425317578108, guid: 053d7a86370ecf24abc56eecf5a84feb, type: 3}
+  transition: {fileID: 2468299426666333387, guid: dcb3c0ddfe27483408557b4f3fe43d8b, type: 3}
+  transitionTime: 1
   healthBar: {fileID: 1233234815560088098}
 --- !u!54 &5780893397458585438
 Rigidbody:
