@@ -11,16 +11,16 @@ Welcome to **The New World**, an immersive PC game set in space where you embark
 
 ## Screenshots
 
-![Screenshot 1](Screenshot1.png)
+![Screenshot 1](I3E_Screenshots/Screenshot1.png)
 _Exploring the wreckage of the crashed spaceship._
 
-![Screenshot 2](Screenshot2.png)
+![Screenshot 2](I3E_Screenshots/Screenshot2.png)
 _Venturing deep into the mysterious forest._
 
-![Screenshot 3](Screenshot3.png)
+![Screenshot 3](I3E_Screenshots/Screenshot3.png)
 _Navigating treacherous caves._
 
-![Screenshot 4](Screenshot4.png)
+![Screenshot 4](I3E_Screenshots/Screenshot4.png)
 _Confronting the final challenge in the underground castle._
 
 ## Controls
