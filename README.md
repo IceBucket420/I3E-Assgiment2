@@ -30,7 +30,6 @@ _Confronting the final challenge in the underground castle._
 - **Interact**: Left mouse button
 - **Attack**: Left Mouse Button
 
-Note: Controls can be customized in the game settings.
 
 ## Desired Settings
 
@@ -52,3 +51,32 @@ To win the game and successfully return home, you must:
 3. Find the missing core reactor required to repair your spaceship.
 4. Return to the crashed spaceship and install the core reactor to fix it.
 5. Successfully
+
+## Credits
+
+### Enemy codes:
+- From Dave/GameDevelopment on YouTube
+### Audio Mixers/Sliders:
+- KapKoder on YouTube
+#### Health bar codes and fade transition: 
+- Brackeys on YouTube
+### Portal particle system:
+- Aqsa Nadeem on YouTube
+### Portal image:
+- Maximillin ludex on Flickr
+
+### Models (from Unity Asset Store):
+- Game Stuff Studios (Sci-Fi Pistol #1)
+- forst (Conifers [BOTD])
+- Plutark_games (Medieval_Castle)
+- ZAKMAN (Rock_Pack)
+
+### Audio (from Unity Asset Store)::
+- JDSherbert
+- Matthew Anett (Classic Footstep SFX)
+- GWriterStudio (Space Ambient Album – 101218)
+
+### Textures:
+- A dog’s life software (Outdoor Ground Textures)
+- Cave, castle textures (PolyHaven)
+
