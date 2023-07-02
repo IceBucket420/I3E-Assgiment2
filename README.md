@@ -11,16 +11,16 @@ Welcome to **The New World**, an immersive PC game set in space where you embark
 
 ## Screenshots
 
-![Screenshot 1](screenshot1.png)
+![Screenshot 1](Screenshot1.png)
 _Exploring the wreckage of the crashed spaceship._
 
-![Screenshot 2](screenshot2.png)
+![Screenshot 2](Screenshot2.png)
 _Venturing deep into the mysterious forest._
 
-![Screenshot 3](screenshot3.png)
+![Screenshot 3](Screenshot3.png)
 _Navigating treacherous caves._
 
-![Screenshot 4](screenshot4.png)
+![Screenshot 4](Screenshot4.png)
 _Confronting the final challenge in the underground castle._
 
 ## Controls
@@ -58,7 +58,7 @@ To win the game and successfully return home, you must:
 - From Dave/GameDevelopment on YouTube
 ### Audio Mixers/Sliders:
 - KapKoder on YouTube
-#### Health bar codes and fade transition: 
+### Health bar codes and fade transition: 
 - Brackeys on YouTube
 ### Portal particle system:
 - Aqsa Nadeem on YouTube
