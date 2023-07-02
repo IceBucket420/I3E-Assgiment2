@@ -1,6 +1,6 @@
 /*
  * Author: Pang Le Xin (Reference from Brackeys YT video)
- * Date: 20/06/2023
+ * Date: 29/06/2023
  * Description: Healthbar script that lets the the health bar decrease in value in player canvas
  */
 

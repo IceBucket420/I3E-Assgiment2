@@ -1,5 +1,5 @@
 /*
- * Author: Pang Le Xin 
+ * Author: Pang Le Xin (with reference KapKoder on YT)
  * Date: 25/06/2023
  * Description: manges the UI volume of the game
  */

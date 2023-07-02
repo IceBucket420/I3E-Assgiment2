@@ -1,6 +1,6 @@
 /*
  * Author: Pang Le Xin 
- * Date: 20/06/2023
+ * Date: 29/06/2023
  * Description: Controls the door animation in the spaceship
  */
 

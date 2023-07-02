@@ -1,7 +1,7 @@
 /*
  * Author: Pang Le Xin 
  * Date: 23/06/2023
- * Description: 
+ * Description: Controls the spawning of the player and manages the UI 
  */
 
 using System.Collections;
