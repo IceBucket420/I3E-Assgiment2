@@ -1,2 +1,54 @@
-# I3E Assignment 2
- For Assignement 2
+# The New World
+
+Welcome to **The New World**, an immersive PC game set in space where you embark on an epic adventure as a stranded astronaut. Your mission is to explore an unknown planet, find and restore the missing core reactor to repair your crashed spaceship, and make your way back home. Prepare to face challenging encounters with aliens and overcome various obstacles as you progress through four captivating levels: the crashed spaceship, the forest, the cave, and the underground castle.
+
+## Features
+
+- **Captivating Storyline**: Experience a gripping narrative as you unravel the mysteries of the unknown planet and strive to return home.
+- **Immersive Gameplay**: Dive into a rich and immersive space environment, complete with stunning visuals and atmospheric sound effects.
+- **Exploration**: Traverse diverse landscapes, from the wreckage of your spaceship to ancient underground structures, as you search for clues and resources.
+- **Encounters and Challenges**: Encounter intriguing alien species and overcome obstacles that stand in your way.
+
+## Screenshots
+
+![Screenshot 1](screenshot1.png)
+_Exploring the wreckage of the crashed spaceship._
+
+![Screenshot 2](screenshot2.png)
+_Venturing deep into the mysterious forest._
+
+![Screenshot 3](screenshot3.png)
+_Navigating treacherous caves._
+
+![Screenshot 4](screenshot4.png)
+_Confronting the final challenge in the underground castle._
+
+## Controls
+
+- **Movement**: W, A, S, D
+- **Jump**: Spacebar
+- **Interact**: Left mouse button
+- **Attack**: Left Mouse Button
+
+Note: Controls can be customized in the game settings.
+
+## Desired Settings
+
+- Graphics Quality: Adjust the graphics quality settings to optimize performance based on your PC's capabilities.
+- Audio Volume: Adjust the volume levels for sound effects and music to your preference.
+
+## Limitations and Known Bugs
+
+- The game may experience occasional frame rate drops on lower-end PCs. Adjusting the graphics quality settings can help mitigate this issue.
+- In rare cases, certain audio effects may not play correctly. Restarting the game usually resolves this issue.
+- While we have taken great care to ensure a smooth gameplay experience, there may be minor collision detection issues or visual glitches in specific areas. We appreciate your understanding and encourage you to report any bugs you encounter.
+
+## How to Win the Game
+
+To win the game and successfully return home, you must:
+
+1. Explore the crashed spaceship to gather resources and discover clues.
+2. Navigate through the forest, cave, and underground castle levels, overcoming obstacles and defeating aliens along the way.
+3. Find the missing core reactor required to repair your spaceship.
+4. Return to the crashed spaceship and install the core reactor to fix it.
+5. Successfully
