@@ -33,12 +33,10 @@ _Confronting the final challenge in the underground castle._
 
 ## Desired Settings
 
-- Graphics Quality: Adjust the graphics quality settings to optimize performance based on your PC's capabilities.
 - Audio Volume: Adjust the volume levels for sound effects and music to your preference.
 
 ## Limitations and Known Bugs
 
-- The game may experience occasional frame rate drops on lower-end PCs. Adjusting the graphics quality settings can help mitigate this issue.
 - In rare cases, certain audio effects may not play correctly. Restarting the game usually resolves this issue.
 - While we have taken great care to ensure a smooth gameplay experience, there may be minor collision detection issues or visual glitches in specific areas. We appreciate your understanding and encourage you to report any bugs you encounter.
 
