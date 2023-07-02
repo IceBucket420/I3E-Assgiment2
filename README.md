@@ -50,7 +50,7 @@ To win the game and successfully return home, you must:
 2. Navigate through the forest, cave, and underground castle levels, overcoming obstacles and defeating aliens along the way.
 3. Find the missing core reactor required to repair your spaceship.
 4. Return to the crashed spaceship and install the core reactor to fix it.
-5. Successfully
+5. Leave the planet.
 
 ## Credits
 
