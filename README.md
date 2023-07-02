@@ -55,28 +55,30 @@ To win the game and successfully return home, you must:
 ## Credits
 
 ### Enemy codes:
-- From Dave/GameDevelopment on YouTube
+- [From Dave/GameDevelopment on YouTube](https://youtu.be/UjkSFoLxesw)
 ### Audio Mixers/Sliders:
-- KapKoder on YouTube
+- [KapKoder on YouTube](https://youtu.be/pbuJUaO-wpY)
 ### Health bar codes and fade transition: 
 - Brackeys on YouTube
+ - [Health Bar](https://www.youtube.com/watch?v=BLfNP4Sc_iA)
+ - [Transition](https://youtu.be/CE9VOZivb3I)
 ### Portal particle system:
-- Aqsa Nadeem on YouTube
+- [Aqsa Nadeem on YouTube](https://youtu.be/_qj-chjOBXc)
 ### Portal image:
-- Maximillin ludex on Flickr
+- [Maximillin ludex on Flickr](https://www.flickr.com/photos/fightforthelight/7043965847)
 
 ### Models (from Unity Asset Store):
-- Game Stuff Studios (Sci-Fi Pistol #1)
-- forst (Conifers [BOTD])
-- Plutark_games (Medieval_Castle)
-- ZAKMAN (Rock_Pack)
+- [Game Stuff Studios (Sci-Fi Pistol #1)](https://assetstore.unity.com/packages/3d/props/guns/sci-fi-pistol-1-141442)
+- [forst (Conifers BOTD)](https://assetstore.unity.com/packages/3d/vegetation/trees/conifers-botd-142076)
+- [Plutark_games (Medieval_Castle)](https://assetstore.unity.com/packages/3d/environments/medieval-castle-227378)
+- [ZAKMAN (Rock_Pack)](https://assetstore.unity.com/packages/3d/environments/landscapes/rock-pack-210536)
 
 ### Audio (from Unity Asset Store)::
-- JDSherbert
-- Matthew Anett (Classic Footstep SFX)
-- GWriterStudio (Space Ambient Album – 101218)
+- [JDSherbert(Ambiences Music Pack (BGM))](https://assetstore.unity.com/packages/audio/music/ambiences-music-pack-bgm-247515)
+- [Matthew Anett (Classic Footstep SFX)](https://assetstore.unity.com/packages/audio/sound-fx/classic-footstep-sfx-173668)
+- [GWriterStudio (Space Ambient Album – 101218)](https://assetstore.unity.com/packages/audio/ambient/space-ambient-album-101218-130708)
 
 ### Textures:
-- A dog’s life software (Outdoor Ground Textures)
-- Cave, castle textures (PolyHaven)
+- [A dog’s life software (Outdoor Ground Textures)](https://assetstore.unity.com/packages/2d/textures-materials/floors/outdoor-ground-textures-12555)
+- [Cave, castle textures (PolyHaven)](https://polyhaven.com/textures)
 
